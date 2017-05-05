@@ -2,7 +2,7 @@ package com.cjd.TextBasedDarkSouls;
 
 import static com.cjd.TextBasedDarkSouls.DarkSoulsMaster.*; //Give access to master context
 
-public class Player {
+public abstract class Player {
     public final String name;
     protected int health;
 
