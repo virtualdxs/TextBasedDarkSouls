@@ -1,4 +1,4 @@
-package com.cjd.TextBasedDarkSouls;
+package com.cjd.textbaseddarksouls;
 
 import java.util.Arrays;
 import java.util.List;

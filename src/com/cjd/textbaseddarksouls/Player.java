@@ -1,6 +1,6 @@
-package com.cjd.TextBasedDarkSouls;
+package com.cjd.textbaseddarksouls;
 
-import static com.cjd.TextBasedDarkSouls.DarkSoulsMaster.*; //Give access to master context
+import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
 public abstract class Player {
     public final String name;

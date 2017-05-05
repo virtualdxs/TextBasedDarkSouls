@@ -1,6 +1,6 @@
-package com.cjd.TextBasedDarkSouls;
+package com.cjd.textbaseddarksouls;
 
-import static com.cjd.TextBasedDarkSouls.DarkSoulsMaster.*;
+import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*;
 
 public class Wizard extends Player {
     public Wizard(String name) {

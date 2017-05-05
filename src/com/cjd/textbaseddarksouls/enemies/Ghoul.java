@@ -1,8 +1,8 @@
-package com.cjd.TextBasedDarkSouls.enemies;
+package com.cjd.textbaseddarksouls.enemies;
 
-import static com.cjd.TextBasedDarkSouls.DarkSoulsMaster.*; //Give access to master context
+import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
-import com.cjd.TextBasedDarkSouls.Enemy;
+import com.cjd.textbaseddarksouls.Enemy;
 
 public class Ghoul extends Enemy {
     public Ghoul() {
