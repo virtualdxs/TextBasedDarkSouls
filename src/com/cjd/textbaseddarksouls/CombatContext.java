@@ -46,6 +46,7 @@ public class CombatContext {
     } else {
       System.out.println("You miss the " + target.getClass().getSimpleName() + "!");
     }
+    try {Thread.sleep(1000);} catch (java.lang.InterruptedException boi) {} //Pause for 1 second after attacking
   }
 
   private void npcCombat() {
@@ -65,6 +66,7 @@ public class CombatContext {
         player.dealDamage(damage);
         System.out.println("Your health is now " + player.getHealth() + ".");
       }
+      try {Thread.sleep(1000);} catch (java.lang.InterruptedException boi) {} //Pause for 1 second between attacts
     }
   }
 

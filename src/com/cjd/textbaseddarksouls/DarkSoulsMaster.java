@@ -15,7 +15,7 @@ import com.cjd.textbaseddarksouls.enemies.*;
  * they will clutter the namespace.
  */
 public abstract class DarkSoulsMaster {
-    public static final boolean devmode = true; //Devmode - Impossible to lose (for debugging)
+    public static final boolean devmode = false; //Devmode - Impossible to lose (for debugging)
     public static final Player player = Player.newPlayer();
 
     public static void endGame() { //End the game
