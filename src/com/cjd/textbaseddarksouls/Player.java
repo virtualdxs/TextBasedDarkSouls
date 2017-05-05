@@ -2,6 +2,8 @@ package com.cjd.textbaseddarksouls;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
@@ -9,6 +11,8 @@ public abstract class Player {
     public final String name;
     protected int health;
     protected Random random = new Random();
+    protected List<Spell> spellInventory = new ArrayList<Spell>();
+    protected List<Potion> potionInventory = new ArrayList<Potion>();
 
     protected final int MAX_HEALTH = 100;
 
@@ -67,13 +71,37 @@ public abstract class Player {
         else health += points;
     }
 
-    public int attack() { // Returns the amount of damage to be dealt to the player
+    /**
+    * Calculates damage for a player attack
+    * @return int Damage of the attack
+    */
+    public int attack() {
       //75% chance of hit; damage is random between 0 and 50
       return (random.nextBoolean() || random.nextBoolean()) ? random.nextInt(50)+1 : 0;
     }
 
     public int getHealth() {
       return health;
+    }
+
+    /**
+    * Allows the player to cast a spell.
+    * @param combatContext The combat context
+    * @param enemies List of enemies
+    * @return True if player successfully drank a potion; false otherwise
+    */
+    public boolean castSpell(CombatContext combatContext,List<Enemy> enemies) {
+      System.out.println("Not yet implemented");
+      return false;
+    }
+
+    /**
+    * Allows the user to drink a potion.
+    * @return True if player successfully drank a potion; false otherwise
+    */
+    public boolean drinkPotion() {
+      System.out.println("Not yet implemented");
+      return false;
     }
 
     public String toString() {
