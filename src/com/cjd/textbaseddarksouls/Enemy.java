@@ -7,6 +7,7 @@ import java.util.Random;
 public abstract class Enemy {
     protected int health;
     protected int MAX_HEALTH;
+    protected int HIT_CHANCE = 75;
     protected Random random = new Random();
 
     public void dealDamage(int points) {
@@ -29,7 +30,7 @@ public abstract class Enemy {
 
     protected abstract void die(); // Sets health to zero and does anything else associated with the enemy's death
     public int attack() { // Returns the amount of damage to be dealt to the player
-      //50% chance of hit; damage is random between 0 and 10
-      return random.nextBoolean() ? 0 : random.nextInt(10)+1;
+      //Calculate hit or miss;damage is random between 0 and 5
+      return random.nextInt(100)>HIT_CHANCE ? 0 : random.nextInt(5)+1;
     }
 }

@@ -15,6 +15,7 @@ public abstract class Player {
     protected List<Potion> potionInventory = new ArrayList<Potion>();
 
     protected final int MAX_HEALTH = 100;
+    protected int HIT_CHANCE = 80;
 
     public Player(String name) {
         this.name = name;
@@ -76,8 +77,8 @@ public abstract class Player {
     * @return int Damage of the attack
     */
     public int attack() {
-      //75% chance of hit; damage is random between 0 and 50
-      return (random.nextBoolean() || random.nextBoolean()) ? random.nextInt(50)+1 : 0;
+      //Calculate hit or miss;damage is random between 5 and 15
+      return random.nextInt(100)>HIT_CHANCE ? 0 : random.nextInt(10)+6;
     }
 
     public int getHealth() {
