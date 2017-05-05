@@ -67,6 +67,10 @@ public abstract class Player {
         else health += points;
     }
 
+    public int getHealth() {
+      return health;
+    }
+
     public String toString() {
       return this.getClass().getSimpleName()+" with "+health+" health";
     }
