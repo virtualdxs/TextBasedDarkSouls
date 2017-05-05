@@ -13,6 +13,7 @@ import java.util.List;
  */
 public abstract class DarkSoulsMaster {
     public static final boolean devmode = true; //Devmode - Impossible to lose (for debugging)
+    public static final Player player = Player.newPlayer();
 
     public static void endGame() { //End the game
         System.out.println("YOU DIED");
@@ -20,6 +21,7 @@ public abstract class DarkSoulsMaster {
     }
 
     public static void main(String[] args) {
-        System.out.println(devmode);
+        System.out.println("Devmode: " + devmode);
+        System.out.println("You are a " + player);
     }
 }
