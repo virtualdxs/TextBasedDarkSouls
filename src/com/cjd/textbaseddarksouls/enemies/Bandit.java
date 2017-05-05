@@ -11,6 +11,6 @@ public class Bandit extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Bandit ded");
+        System.out.println("Bandit ded");
     }
 }

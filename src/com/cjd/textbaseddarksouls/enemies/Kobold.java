@@ -11,6 +11,6 @@ public class Kobold extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Kobold ded");
+        System.out.println("Kobold ded");
     }
 }

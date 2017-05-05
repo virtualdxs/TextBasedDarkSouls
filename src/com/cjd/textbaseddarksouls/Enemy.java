@@ -23,8 +23,13 @@ public abstract class Enemy {
         return health;
     }
 
+    public String toString() {
+      return this.getClass().getSimpleName()+" with "+health+" health";
+    }
+
     protected abstract void die(); // Sets health to zero and does anything else associated with the enemy's death
     public int attack() { // Returns the amount of damage to be dealt to the player
+      //50% chance of hit; damage is random between 0 and 10
       return random.nextBoolean() ? 0 : random.nextInt(10)+1;
     }
 }

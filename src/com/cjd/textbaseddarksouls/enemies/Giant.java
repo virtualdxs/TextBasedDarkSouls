@@ -11,6 +11,6 @@ public class Giant extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Giant ded");
+        System.out.println("Giant ded");
     }
 }

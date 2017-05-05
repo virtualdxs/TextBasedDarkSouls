@@ -1,14 +1,14 @@
 package com.cjd.textbaseddarksouls;
 
 import java.util.Scanner;
-import org.omg.CORBA.portable.Streamable;
-import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*;
+import java.util.Random;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
 public abstract class Player {
     public final String name;
     protected int health;
+    protected Random random = new Random();
 
     protected final int MAX_HEALTH = 100;
 
@@ -65,6 +65,11 @@ public abstract class Player {
         if (devmode) return; //Prevent healing if in devmode
         if (points > MAX_HEALTH-health) health = MAX_HEALTH; //Prevent player from healing past MAX_HEALTH
         else health += points;
+    }
+
+    public int attack() { // Returns the amount of damage to be dealt to the player
+      //75% chance of hit; damage is random between 0 and 50
+      return (random.nextBoolean() || random.nextBoolean()) ? random.nextInt(50)+1 : 0;
     }
 
     public int getHealth() {

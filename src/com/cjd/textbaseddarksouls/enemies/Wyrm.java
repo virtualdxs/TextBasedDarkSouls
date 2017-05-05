@@ -11,6 +11,6 @@ public class Wyrm extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Wyrm ded");
+        System.out.println("Wyrm ded");
     }
 }

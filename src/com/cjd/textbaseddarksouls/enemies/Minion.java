@@ -11,6 +11,6 @@ public class Minion extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Minion ded");
+        System.out.println("Minion ded");
     }
 }

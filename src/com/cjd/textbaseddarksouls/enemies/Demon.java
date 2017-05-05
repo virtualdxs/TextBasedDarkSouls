@@ -11,6 +11,6 @@ public class Demon extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Demon ded");
+        System.out.println("Demon ded");
     }
 }

@@ -11,6 +11,6 @@ public class Ghoul extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Ghoul ded");
+        System.out.println("Ghoul ded");
     }
 }

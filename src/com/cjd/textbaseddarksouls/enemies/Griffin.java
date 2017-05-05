@@ -11,6 +11,6 @@ public class Griffin extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Griffin ded");
+        System.out.println("Griffin ded");
     }
 }

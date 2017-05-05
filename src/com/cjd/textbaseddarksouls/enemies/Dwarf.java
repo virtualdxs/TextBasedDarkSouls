@@ -11,6 +11,6 @@ public class Dwarf extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Dwarf ded");
+        System.out.println("Dwarf ded");
     }
 }

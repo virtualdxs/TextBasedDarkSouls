@@ -11,6 +11,6 @@ public class Gorgon extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Gorgon ded");
+        System.out.println("Gorgon ded");
     }
 }

@@ -11,6 +11,6 @@ public class Gargoyle extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Gargoyle ded");
+        System.out.println("Gargoyle ded");
     }
 }

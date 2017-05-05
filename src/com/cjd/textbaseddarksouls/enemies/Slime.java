@@ -11,6 +11,6 @@ public class Slime extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Slime ded");
+        System.out.println("Slime ded");
     }
 }

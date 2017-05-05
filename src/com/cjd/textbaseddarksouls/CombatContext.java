@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class CombatContext {
   private List<Enemy> enemies;
+  private Scanner s = new Scanner(System.in);
 
   public CombatContext() {
     enemies = new ArrayList<Enemy>();
@@ -25,12 +26,38 @@ public class CombatContext {
     return enemies.size() == 0;
   }
 
+  public int chooseTarget() {
+    int selection = -1;
+    while (selection < 0 || selection >= enemies.size()) {
+    System.out.println("Which enemy would you like to attack? Options are:");
+      for (int i=0;i<enemies.size();i++) {
+        System.out.println(i+". " + enemies.get(i));
+      }
+      selection = s.nextInt();
+      s.nextLine(); //Eat newline given to us
+    }
+    return selection;
+  }
+
   public void runCombat() {
-    Scanner s = new Scanner(System.in);
     int damage;
+    Enemy target;
     while (enemies.size() > 0) {
+      target = enemies.get(chooseTarget());
+      damage = player.attack();
+      if (damage > 0) {
+        target.dealDamage(damage);
+        System.out.println("You hit the " + target.getClass().getSimpleName() + ", doing "+ damage + " damage!");
+      } else {
+        System.out.println("You miss the " + target.getClass().getSimpleName() + "!");
+      }
       //Player combat goes here
-      for (Enemy enemy : enemies) { //NPC Combat
+      for (int i=0;i<enemies.size();i++) { //NPC Combat
+        Enemy enemy = enemies.get(i);
+        if (enemy.getHealth() == 0) {
+          enemies.remove(i);
+          continue;
+        }
         damage = enemy.attack();
         if (damage == 0) {
           System.out.println("The "+ enemy.getClass().getSimpleName() +" misses!");
@@ -40,8 +67,8 @@ public class CombatContext {
           player.dealDamage(damage);
           System.out.println("Your health is now " + player.getHealth() + ".");
         }
-        s.nextLine();
       }
     }
+    System.out.println("You have defeated all the enemies. Your health is " + player.getHealth() + ".");
   }
 }

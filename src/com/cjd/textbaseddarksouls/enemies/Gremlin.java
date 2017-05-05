@@ -11,6 +11,6 @@ public class Gremlin extends Enemy {
     }
     protected void die() {
         health = 0;
-        System.out.print("Gremlin ded");
+        System.out.println("Gremlin ded");
     }
 }
