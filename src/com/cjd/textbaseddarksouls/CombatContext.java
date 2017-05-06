@@ -24,7 +24,7 @@ public class CombatContext {
     enemies.add(newEnemy);
   }
 
-  public int chooseTarget() {
+  private int chooseTarget() {
     int selection = -1;
     while (selection < 0 || selection >= enemies.size()) {
     System.out.println("Which enemy would you like to attack? Options are:");
@@ -73,6 +73,7 @@ public class CombatContext {
   }
 
   public void runCombat() {
+    int enemiesToDefeat = enemies.size();
     int damage;
     while (enemies.size() > 0) {
       boolean done = false;
@@ -87,7 +88,13 @@ public class CombatContext {
             done = true;
             break;
           case 2:
-            done = player.castSpell(this,enemies);
+            done = player.castSpell(enemies);
+            for (int i=0;i<enemies.size();i++) {
+              Enemy enemy = enemies.get(i);
+              if (enemy.getHealth() == 0) { //Garbage collect dead enemies
+                enemies.remove(i);
+              }
+            }
             break;
           case 3:
             done = player.drinkPotion();
@@ -99,5 +106,6 @@ public class CombatContext {
       npcCombat();
     }
     System.out.println("You have defeated all the enemies. Your health is " + player.getHealth() + ".");
+    player.addEnemiesDefeated(enemiesToDefeat);
   }
 }

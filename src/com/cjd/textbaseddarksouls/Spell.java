@@ -2,7 +2,7 @@ package com.cjd.textbaseddarksouls;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
-//Not yet implemented
-public abstract class Spell {
-
+public interface Spell {
+  int getMinLevel(); //Minimum level to cast the spell
+  int getReqPower(); //Magical power required to cast the spell
 }

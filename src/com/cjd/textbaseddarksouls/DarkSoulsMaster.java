@@ -20,12 +20,35 @@ public abstract class DarkSoulsMaster {
 
     public static void endGame() { //End the game
         System.out.println("YOU DIED");
+        System.out.println("When you died, you were at level " + player.getLevel() + ".");
         System.exit(0); //Shut down entire JVM
+    }
+
+    public static void printStats() {
+        System.out.println("Current health: " + player.getHealth());
+        System.out.println("Current power: " + player.getPower());
+        System.out.println("Current max power: " + player.getMaxPower());
     }
 
     public static void main(String[] args) {
         System.out.println("Devmode: " + devmode);
-        System.out.println("You are a " + player);
+        System.out.println("You are a " + player + ".");
+        printStats();
+        System.out.println("Dealing 10 damage...");
+        player.dealDamage(10);
+        printStats();
+        System.out.println("Setting kill count to 16...");
+        player.addEnemiesDefeated(16);
+        System.out.println("Running a turn...");
+        player.runTurn();
+        printStats();
+        System.out.println("Casting heal spell...");
+        new com.cjd.textbaseddarksouls.spell.Heal().cast();
+        printStats();
+        System.out.println("Running another turn...");
+        player.runTurn();
+        printStats();
+        System.out.println("Running a combat stage...");
         List<Enemy> enemyList = new ArrayList<Enemy>(15);
         enemyList.add(new Bandit());
         enemyList.add(new Demon());
