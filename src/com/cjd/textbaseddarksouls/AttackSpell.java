@@ -1,4 +1,4 @@
-package com.cjd.textbaseddarksouls.spell;
+package com.cjd.textbaseddarksouls;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
@@ -7,5 +7,5 @@ import com.cjd.textbaseddarksouls.Spell;
 import com.cjd.textbaseddarksouls.Enemy;
 
 public interface AttackSpell extends Spell{
-  void cast(List<Enemy> enemyList);
+  boolean cast(List<Enemy> enemyList);
 }

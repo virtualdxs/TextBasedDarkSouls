@@ -14,7 +14,8 @@ public abstract class Player {
     protected int level;
     protected int enemiesDefeated;
     protected Random random = new Random(); //RNG
-    protected List<Spell> spellInventory = new ArrayList<Spell>();
+    protected List<AttackSpell> attackSpellInventory = new ArrayList<AttackSpell>();
+    protected List<GenericSpell> genericSpellInventory = new ArrayList<GenericSpell>();
     protected List<Potion> potionInventory = new ArrayList<Potion>();
 
     protected final int MAX_HEALTH = 100;
@@ -125,15 +126,66 @@ public abstract class Player {
 
     /**
     * Allows the player to cast a spell.
-    * @param enemies List of enemies
+    * @param enemies List of enemies, in case player uses an attack spell
     * @return True if player successfully drank a potion; false otherwise
     */
     public boolean castSpell(List<Enemy> enemies) {
-      System.out.println("Not yet implemented");
-      return false;
+      Scanner s = new Scanner(System.in);
+      System.out.println("1. Attack spell\nor\n2. Generic spell?");
+      int selection = s.nextInt();
+      if (selection != 1 && selection != 2) return false;
+      switch (selection) {
+        case 1:
+          return castAttackSpell(enemies);
+        case 2:
+          return castGenericSpell();
+        default: 
+          return false;
+      }
     }
 
     /**
+    * Allows the player to cast an attack spell.
+    * @param enemies List of enemies, in case player uses an attack spell
+    * @return True if player successfully drank a potion; false otherwise
+    */
+    public boolean castAttackSpell(List<Enemy> enemies) {
+      if (attackSpellInventory.size() == 0) {
+        System.out.println("You have no attack spells!");
+        return false;
+      }
+      Scanner s = new Scanner(System.in);
+      System.out.println("Which spell?");
+      for (int i = 0;i < attackSpellInventory.size();i++) {
+        System.out.println(i + ". " + attackSpellInventory.get(i));
+      }
+      int selection = s.nextInt();
+      if (selection < 0 || selection > attackSpellInventory.size() - 1) return false;
+      return attackSpellInventory.get(selection).cast(enemies);
+    }
+
+    /**
+    * Allows the player to cast a generic spell.
+    * @param enemies List of enemies, in case player uses an attack spell
+    * @return True if player successfully drank a potion; false otherwise
+    */
+    public boolean castGenericSpell() {
+      if (genericSpellInventory.size() == 0) {
+        System.out.println("You have no generic spells!");
+        return false;
+      }
+      Scanner s = new Scanner(System.in);
+      System.out.println("Which spell?");
+      for (int i = 0;i < genericSpellInventory.size();i++) {
+        System.out.println(i + ". " + genericSpellInventory.get(i));
+      }
+      int selection = s.nextInt();
+      if (selection < 0 || selection > genericSpellInventory.size() - 1) return false;
+      return genericSpellInventory.get(selection).cast();
+    }
+
+
+   /**
     * Allows the user to drink a potion.
     * @return True if player successfully drank a potion; false otherwise
     */
