@@ -105,6 +105,7 @@ public abstract class Player {
      * @param energy The amount of energy to subtract
      */
     public void usePower(int usedPower) {
+      if (usedPower < 1) throw new IllegalArgumentException();
       power -= usedPower;
     }
     /**
