@@ -146,10 +146,21 @@ public abstract class Player {
     }
 
     /**
-    * Allows the player to cast an attack spell.
-    * @param enemies List of enemies, in case player uses an attack spell
-    * @return True if player successfully drank a potion; false otherwise
-    */
+     * Gives the player the provided attack spell.
+     * @param spell The attack spell to give the player
+     * @return True if the player successfully learned the spell; false otherwise
+     */
+    public boolean giveAttackSpell(AttackSpell spell) {
+      if (spell.getMinLevel() < level) return false;
+      attackSpellInventory.add(spell);
+      return true;
+    }
+
+    /**
+     * Allows the player to cast an attack spell.
+     * @param enemies List of enemies
+     * @return True if player successfully drank a potion; false otherwise
+     */
     public boolean castAttackSpell(List<Enemy> enemies) {
       if (attackSpellInventory.size() == 0) {
         System.out.println("You have no attack spells!");
@@ -166,10 +177,20 @@ public abstract class Player {
     }
 
     /**
-    * Allows the player to cast a generic spell.
-    * @param enemies List of enemies, in case player uses an attack spell
-    * @return True if player successfully drank a potion; false otherwise
-    */
+     * Gives the player the provided generic spell.
+     * @param spell The generic spell to give the player
+     * @return True if the player successfully learned the spell; false otherwise
+     */
+    public boolean giveGenericSpell(GenericSpell spell) {
+      if (spell.getMinLevel() < level) return false;
+      genericSpellInventory.add(spell);
+      return true;
+    }
+
+    /**
+     * Allows the player to cast a generic spell.
+     * @return True if player successfully drank a potion; false otherwise
+     */
     public boolean castGenericSpell() {
       if (genericSpellInventory.size() == 0) {
         System.out.println("You have no generic spells!");
@@ -225,7 +246,7 @@ public abstract class Player {
     public int getMaxPower(){ return MAX_POWER; }
     public int getHealth() { return health; }
 
-    public enum PlayerClass {
+    private enum PlayerClass {
       RAN("Ranged"),
       WAR("Warrior"),
       WIZ("Wizard");

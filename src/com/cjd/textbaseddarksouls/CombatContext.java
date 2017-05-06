@@ -89,10 +89,14 @@ public class CombatContext {
             break;
           case 2:
             done = player.castSpell(enemies);
-            for (int i=0;i<enemies.size();i++) {
-              Enemy enemy = enemies.get(i);
-              if (enemy.getHealth() == 0) { //Garbage collect dead enemies
-                enemies.remove(i);
+            if (done) System.out.println("Your health is now " + player.getHealth() + ".");
+            else {
+              System.out.println("Not enough power to cast that spell.");
+              for (int i=0;i<enemies.size();i++) {
+                Enemy enemy = enemies.get(i);
+                if (enemy.getHealth() == 0) { //Garbage collect dead enemies
+                  enemies.remove(i);
+                }
               }
             }
             break;

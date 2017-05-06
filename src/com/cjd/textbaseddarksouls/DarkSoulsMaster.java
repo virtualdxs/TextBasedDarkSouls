@@ -25,6 +25,7 @@ public abstract class DarkSoulsMaster {
     }
 
     public static void printStats() {
+        System.out.println("Current level: " + player.getLevel());
         System.out.println("Current health: " + player.getHealth());
         System.out.println("Current power: " + player.getPower());
         System.out.println("Current max power: " + player.getMaxPower());
@@ -34,20 +35,12 @@ public abstract class DarkSoulsMaster {
         System.out.println("Devmode: " + devmode);
         System.out.println("You are a " + player + ".");
         printStats();
-        System.out.println("Dealing 10 damage...");
-        player.dealDamage(10);
-        printStats();
         System.out.println("Setting kill count to 16...");
         player.addEnemiesDefeated(16);
         System.out.println("Running a turn...");
         player.runTurn();
         printStats();
-        System.out.println("Casting heal spell...");
-        new com.cjd.textbaseddarksouls.spell.Heal().cast();
-        printStats();
-        System.out.println("Running another turn...");
-        player.runTurn();
-        printStats();
+        player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
         System.out.println("Running a combat stage...");
         List<Enemy> enemyList = new ArrayList<Enemy>(15);
         enemyList.add(new Bandit());

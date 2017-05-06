@@ -17,6 +17,7 @@ public class Heal implements GenericSpell {
     if(player.getPower() < REQ_POWER) return false;
     player.usePower(REQ_POWER);
     player.heal(BOOST_AMOUNT);
+    System.out.println("Healed 5 health.");
     return true;
   }
 }
