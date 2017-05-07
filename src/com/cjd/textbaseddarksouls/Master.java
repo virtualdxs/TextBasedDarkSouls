@@ -34,12 +34,8 @@ public abstract class Master {
     public static void main(String[] args) {
         System.out.println("Devmode: " + devmode);
         System.out.println("You are a " + player + ".");
-        printStats();
-        System.out.println("Setting kill count to 16...");
         player.addEnemiesDefeated(16);
-        System.out.println("Running a turn...");
         player.runTurn();
-        printStats();
         System.out.println("Giving player spells...");
         player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
         player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.ForceBolt());
