@@ -133,7 +133,7 @@ public abstract class Player {
     */
     public boolean castSpell(List<Enemy> enemies) {
       Scanner s = new Scanner(System.in);
-      System.out.println("1. Attack spell\nor\n2. Generic spell?");
+      System.out.println("\n1. Attack spell\nor\n2. Generic spell?");
       int selection = s.nextInt();
       if (selection != 1 && selection != 2) return false;
       switch (selection) {
@@ -168,7 +168,7 @@ public abstract class Player {
         return false;
       }
       Scanner s = new Scanner(System.in);
-      System.out.println("Which spell?");
+      System.out.println("\nWhich spell?");
       for (int i = 0;i < attackSpellInventory.size();i++) {
         System.out.println(i + ". " + attackSpellInventory.get(i));
       }
@@ -198,7 +198,7 @@ public abstract class Player {
         return false;
       }
       Scanner s = new Scanner(System.in);
-      System.out.println("Which spell?");
+      System.out.println("\nWhich spell?");
       for (int i = 0;i < genericSpellInventory.size();i++) {
         System.out.println(i + ". " + genericSpellInventory.get(i));
       }

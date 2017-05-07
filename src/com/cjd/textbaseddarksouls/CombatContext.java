@@ -25,7 +25,7 @@ public class CombatContext {
   }
 
   private int chooseTarget() {
-    System.out.println("Which enemy would you like to attack? Options are:");
+    System.out.println("\nWhich enemy would you like to attack? Options are:");
     for (int i=0;i<enemies.size();i++) {
       System.out.println(i+". " + enemies.get(i));
     }
@@ -38,11 +38,10 @@ public class CombatContext {
   }
 
   private boolean playerCombat() {
-    int damage;
     int targetNum = chooseTarget();
     if (targetNum == -1) return false;
-    Enemy target = enemies.get(chooseTarget());
-    damage = player.attack();
+    Enemy target = enemies.get(targetNum);
+    int damage = player.attack();
     if (damage > 0) {
       target.dealDamage(damage);
       System.out.println("You hit the " + target.getClass().getSimpleName() + ", doing "+ damage + " damage!");
@@ -88,11 +87,11 @@ public class CombatContext {
       boolean done = false;
       int selection;
       while (!done) {
-        System.out.println("Current enemies:");
+        System.out.println("\nCurrent enemies:");
         for (int i=0;i<enemies.size();i++) {
           System.out.println(enemies.get(i));
         }
-        System.out.println("What would you like to do?\n1. Fight\n2. Cast a spell\n3. Drink a potion");
+        System.out.println("\nWhat would you like to do?\n1. Fight\n2. Cast a spell\n3. Drink a potion");
         selection = s.nextInt();
         s.nextLine(); //Eat newline given to us
         switch (selection) {
