@@ -212,6 +212,13 @@ public abstract class Player {
       return genericSpellInventory.get(selection).cast();
     }
 
+   /**
+    * Gives the player a potion.
+    * @param potion The potion to give
+    */
+    public void givePotion(Potion potion) {
+      potionInventory.add(potion);
+    }
 
    /**
     * Allows the user to drink a potion.
