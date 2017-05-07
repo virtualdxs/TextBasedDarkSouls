@@ -54,7 +54,7 @@ public class CombatContext {
 
   private void removeDeadEnemies() {
     for (int i = enemies.size()-1;i >= 0;i--) {
-      if (enemies.get(i).getHealth() == 0) { 
+      if (enemies.get(i).getHealth() == 0) {
         enemies.remove(i);
         continue;
       }
@@ -70,7 +70,7 @@ public class CombatContext {
       if (damage == 0) {
         System.out.println("The "+ enemy.getClass().getSimpleName() +" misses!");
       } else {
-        System.out.println("The "+ enemy.getClass().getSimpleName() +" hits!");
+        System.out.print("The "+ enemy.getClass().getSimpleName() +" hits! ");
         System.out.println("It deals " + damage + " damage!");
         player.dealDamage(damage);
         System.out.println("Your health is now " + player.getHealth() + ".");
