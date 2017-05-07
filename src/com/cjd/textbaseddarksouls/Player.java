@@ -151,7 +151,7 @@ public abstract class Player {
      * @return True if the player successfully learned the spell; false otherwise
      */
     public boolean giveAttackSpell(AttackSpell spell) {
-      if (spell.getMinLevel() < level) return false;
+      if (spell.getMinLevel() > level) return false;
       attackSpellInventory.add(spell);
       return true;
     }
@@ -182,7 +182,7 @@ public abstract class Player {
      * @return True if the player successfully learned the spell; false otherwise
      */
     public boolean giveGenericSpell(GenericSpell spell) {
-      if (spell.getMinLevel() < level) return false;
+      if (spell.getMinLevel() > level) return false;
       genericSpellInventory.add(spell);
       return true;
     }

@@ -1,4 +1,4 @@
-package com.cjd.textbaseddarksouls;
+package com.cjd.textbaseddarksouls.potion;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 

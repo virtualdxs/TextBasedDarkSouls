@@ -4,7 +4,7 @@ package com.cjd.textbaseddarksouls;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.cjd.textbaseddarksouls.enemies.*;
+import com.cjd.textbaseddarksouls.enemy.*;
 
 /**
  * DarkSoulsMaster
@@ -41,6 +41,7 @@ public abstract class DarkSoulsMaster {
         player.runTurn();
         printStats();
         player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
+        player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.ForceBolt());
         System.out.println("Running a combat stage...");
         List<Enemy> enemyList = new ArrayList<Enemy>(15);
         enemyList.add(new Bandit());

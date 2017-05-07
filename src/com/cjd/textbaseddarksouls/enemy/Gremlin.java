@@ -1,4 +1,4 @@
-package com.cjd.textbaseddarksouls.enemies;
+package com.cjd.textbaseddarksouls.enemy;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 

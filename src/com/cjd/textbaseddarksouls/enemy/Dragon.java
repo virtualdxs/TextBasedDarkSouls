@@ -1,16 +1,16 @@
-package com.cjd.textbaseddarksouls.enemies;
+package com.cjd.textbaseddarksouls.enemy;
 
 import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
 
 import com.cjd.textbaseddarksouls.Enemy;
 
-public class Bandit extends Enemy {
-    public Bandit() {
+public class Dragon extends Enemy {
+    public Dragon() {
         MAX_HEALTH = 10;
         health = 10;
     }
     protected void die() {
         health = 0;
-        System.out.println("Bandit ded");
+        System.out.println("Dragon ded");
     }
 }
