@@ -218,8 +218,16 @@ public abstract class Player {
     * @return True if player successfully drank a potion; false otherwise
     */
     public boolean drinkPotion() {
-      System.out.println("Not yet implemented");
-      return false;
+      if (potionInventory.size() == 0) {
+        System.out.println("You don't have any potions!");
+        return false;
+      }
+      System.out.println("Which potion would you like to drink?");
+      for (int i=0;i<potionInventory.size();i++) {
+        System.out.println(i + ". " + potionInventory.get(i));
+      }
+      potionInventory.remove(new Scanner(System.in).nextInt()).drink();
+      return true;
     }
 
     /**
