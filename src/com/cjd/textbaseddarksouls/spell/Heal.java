@@ -2,8 +2,6 @@ package com.cjd.textbaseddarksouls.spell;
 
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
-import com.cjd.textbaseddarksouls.GenericSpell;
-
 public class Heal implements GenericSpell {
   private static final int MIN_LEVEL = 4;
   private static final int REQ_POWER = 10;

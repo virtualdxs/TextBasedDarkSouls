@@ -1,6 +1,8 @@
-package com.cjd.textbaseddarksouls;
+package com.cjd.textbaseddarksouls.player;
 
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
+
+import com.cjd.textbaseddarksouls.Player;
 
 public class Warrior extends Player {
     public Warrior(String name) {

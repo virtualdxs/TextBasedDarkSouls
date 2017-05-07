@@ -5,7 +5,6 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import java.util.List;
 import java.util.Scanner;
 import com.cjd.textbaseddarksouls.Enemy;
-import com.cjd.textbaseddarksouls.AttackSpell;
 
 public class Shockwave implements AttackSpell {
   public static final int DAMAGE = 3;

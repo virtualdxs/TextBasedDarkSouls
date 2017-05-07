@@ -5,6 +5,10 @@ import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.cjd.textbaseddarksouls.spell.AttackSpell;
+import com.cjd.textbaseddarksouls.spell.GenericSpell;
+import com.cjd.textbaseddarksouls.player.*;
+
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 public abstract class Player {

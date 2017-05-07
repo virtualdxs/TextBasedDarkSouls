@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 import com.cjd.textbaseddarksouls.Enemy;
-import com.cjd.textbaseddarksouls.AttackSpell;
 
 public class ForceBolt implements AttackSpell {
   public static final int DAMAGE = 15;
