@@ -25,22 +25,23 @@ public class CombatContext {
   }
 
   private int chooseTarget() {
-    int selection = -1;
-    while (selection < 0 || selection >= enemies.size()) {
     System.out.println("Which enemy would you like to attack? Options are:");
-      for (int i=0;i<enemies.size();i++) {
-        System.out.println(i+". " + enemies.get(i));
-      }
-      selection = s.nextInt();
-      s.nextLine(); //Eat newline given to us
+    for (int i=0;i<enemies.size();i++) {
+      System.out.println(i+". " + enemies.get(i));
+    }
+    int selection = s.nextInt();
+    s.nextLine(); //Eat newline given to us
+    if (selection < 0 || selection >= enemies.size()) {
+      return -1;
     }
     return selection;
   }
 
-  private void playerCombat() {
+  private boolean playerCombat() {
     int damage;
-    Enemy target;
-    target = enemies.get(chooseTarget());
+    int targetNum = chooseTarget();
+    if (targetNum == -1) return false;
+    Enemy target = enemies.get(chooseTarget());
     damage = player.attack();
     if (damage > 0) {
       target.dealDamage(damage);
@@ -49,10 +50,11 @@ public class CombatContext {
       System.out.println("You miss the " + target.getClass().getSimpleName() + "!");
     }
     try {Thread.sleep(SLEEP_TIME);} catch (java.lang.InterruptedException boi) {} //Pause for 1 second after attacking
+    return true;
   }
 
   private void removeDeadEnemies() {
-    for (int i=0;i<enemies.size();i++) {
+    for (int i = enemies.size()-1;i >= 0;i--) {
       if (enemies.get(i).getHealth() == 0) { 
         enemies.remove(i);
         continue;
@@ -61,13 +63,10 @@ public class CombatContext {
   }
 
   private void npcCombat() {
+    removeDeadEnemies();
     int damage;
     for (int i=0;i<enemies.size();i++) {
       Enemy enemy = enemies.get(i);
-      if (enemy.getHealth() == 0) { //Garbage collect dead enemies
-        enemies.remove(i);
-        continue;
-      }
       damage = enemy.attack();
       if (damage == 0) {
         System.out.println("The "+ enemy.getClass().getSimpleName() +" misses!");
@@ -84,10 +83,15 @@ public class CombatContext {
   public void runCombat() {
     int enemiesToDefeat = enemies.size();
     int damage;
+    System.out.println("-----COMBAT-----");
     while (enemies.size() > 0) {
       boolean done = false;
       int selection;
       while (!done) {
+        System.out.println("Current enemies:");
+        for (int i=0;i<enemies.size();i++) {
+          System.out.println(enemies.get(i));
+        }
         System.out.println("What would you like to do?\n1. Fight\n2. Cast a spell\n3. Drink a potion");
         selection = s.nextInt();
         s.nextLine(); //Eat newline given to us

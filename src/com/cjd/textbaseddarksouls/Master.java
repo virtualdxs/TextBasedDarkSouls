@@ -15,7 +15,7 @@ import com.cjd.textbaseddarksouls.enemy.*;
  * they will clutter the namespace.
  */
 public abstract class Master {
-    public static final boolean devmode = false; //Devmode - Impossible to lose (for debugging)
+    public static final boolean devmode = false; //Devmode - Impossible to lose health or power (for debugging)
     public static final Player player = Player.newPlayer();
 
     public static void endGame() { //End the game
@@ -40,8 +40,10 @@ public abstract class Master {
         System.out.println("Running a turn...");
         player.runTurn();
         printStats();
+        System.out.println("Giving player spells...");
         player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
         player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.ForceBolt());
+        player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.Shockwave());
         System.out.println("Running a combat stage...");
         List<Enemy> enemyList = new ArrayList<Enemy>(15);
         enemyList.add(new Bandit());
