@@ -40,6 +40,9 @@ public abstract class Master {
         player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
         player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.ForceBolt());
         player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.Shockwave());
+        player.givePotion(new com.cjd.textbaseddarksouls.potion.HealingPotion());
+        player.givePotion(new com.cjd.textbaseddarksouls.potion.HealingPotion());
+        player.givePotion(new com.cjd.textbaseddarksouls.potion.ExtraHealingPotion());
         System.out.println("Running a combat stage...");
         List<Enemy> enemyList = new ArrayList<Enemy>(15);
         enemyList.add(new Bandit());

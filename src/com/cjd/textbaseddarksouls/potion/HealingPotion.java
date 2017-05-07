@@ -12,6 +12,7 @@ public class HealingPotion implements Potion {
   public void drink() {
     if (used) throw new PotionReusedException();
     player.heal(BOOST_AMOUNT);
+    System.out.println("Drank the " + this + ". Your health is now " + player.getHealth());
     used = true;
   }
 

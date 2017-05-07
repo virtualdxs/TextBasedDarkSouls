@@ -233,7 +233,9 @@ public abstract class Player {
       for (int i=0;i<potionInventory.size();i++) {
         System.out.println(i + ". " + potionInventory.get(i));
       }
-      potionInventory.remove(new Scanner(System.in).nextInt()).drink();
+      int selection = new Scanner(System.in).nextInt();
+      if (selection < 0 || selection > potionInventory.size() - 1) return false;
+      potionInventory.remove(selection).drink();
       return true;
     }
 
