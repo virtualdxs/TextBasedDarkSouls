@@ -7,14 +7,14 @@ import java.util.List;
 import com.cjd.textbaseddarksouls.enemy.*;
 
 /**
- * DarkSoulsMaster
+ * Master
  * The entry point and main context for the game.
  * This class is the context for the entire game. Static instance
  * variables become global variables. Therefore, avoid putting
  * methods and variables in here unless they must be global, as
  * they will clutter the namespace.
  */
-public abstract class DarkSoulsMaster {
+public abstract class Master {
     public static final boolean devmode = false; //Devmode - Impossible to lose (for debugging)
     public static final Player player = Player.newPlayer();
 

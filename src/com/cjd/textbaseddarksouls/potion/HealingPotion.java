@@ -3,7 +3,7 @@ package com.cjd.textbaseddarksouls.potion;
 import com.cjd.textbaseddarksouls.Potion;
 import com.cjd.textbaseddarksouls.exception.PotionReusedException;
 
-import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
+import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 public class HealingPotion implements Potion {
   protected static int BOOST_AMOUNT = 10;

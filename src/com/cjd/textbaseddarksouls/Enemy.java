@@ -1,6 +1,6 @@
 package com.cjd.textbaseddarksouls;
 
-import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
+import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 import java.util.Random;
 

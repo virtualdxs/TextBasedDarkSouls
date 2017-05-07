@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
-import static com.cjd.textbaseddarksouls.DarkSoulsMaster.*; //Give access to master context
+import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 public abstract class Player {
     public final String name;
