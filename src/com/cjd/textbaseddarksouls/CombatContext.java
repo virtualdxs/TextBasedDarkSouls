@@ -51,6 +51,15 @@ public class CombatContext {
     try {Thread.sleep(SLEEP_TIME);} catch (java.lang.InterruptedException boi) {} //Pause for 1 second after attacking
   }
 
+  private void removeDeadEnemies() {
+    for (int i=0;i<enemies.size();i++) {
+      if (enemies.get(i).getHealth() == 0) { 
+        enemies.remove(i);
+        continue;
+      }
+    }
+  }
+
   private void npcCombat() {
     int damage;
     for (int i=0;i<enemies.size();i++) {
@@ -68,7 +77,7 @@ public class CombatContext {
         player.dealDamage(damage);
         System.out.println("Your health is now " + player.getHealth() + ".");
       }
-      try {Thread.sleep(SLEEP_TIME);} catch (java.lang.InterruptedException boi) {} //Pause for 1 second between attacts
+      try {Thread.sleep(SLEEP_TIME);} catch (java.lang.InterruptedException e) {} //Pause for 1 second between attacts
     }
   }
 
@@ -108,6 +117,7 @@ public class CombatContext {
         }
       }
       npcCombat();
+      removeDeadEnemies();
     }
     System.out.println("You have defeated all the enemies. Your health is " + player.getHealth() + ".");
     player.addEnemiesDefeated(enemiesToDefeat);
