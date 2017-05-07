@@ -14,6 +14,8 @@ public class ForceBolt implements AttackSpell {
 
   public int getReqPower() { return REQ_POWER; }
   public int getMinLevel() { return MIN_LEVEL; }
+  
+  public String toString() { return "Force Bolt"; }
 
   public boolean cast(List<Enemy> enemies) {
     Scanner s = new Scanner(System.in);

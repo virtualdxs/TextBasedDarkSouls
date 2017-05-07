@@ -12,6 +12,8 @@ public class Heal implements GenericSpell {
   public int getMinLevel() {return MIN_LEVEL;}
   public int getReqPower() {return REQ_POWER;}
 
+  public String toString() { return "Heal"; }
+
   public boolean cast() {
     if(player.getLevel() < MIN_LEVEL) throw new com.cjd.textbaseddarksouls.exception.LevelTooLowException();
     if(player.getPower() < REQ_POWER) return false;
