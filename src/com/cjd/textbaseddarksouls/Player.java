@@ -39,7 +39,8 @@ public abstract class Player {
     public static Player newPlayer() {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Welcome! What is your name?");
-      String name = scanner.nextLine();
+      String name = "";
+      while(name.equals("")) name = scanner.nextLine();
       System.out.println("Hello, "+name+"! What class do you want to play?");
       PlayerClass playerClass = null;
       while (playerClass == null) {
@@ -141,7 +142,7 @@ public abstract class Player {
           return castAttackSpell(enemies);
         case 2:
           return castGenericSpell();
-        default: 
+        default:
           return false;
       }
     }
