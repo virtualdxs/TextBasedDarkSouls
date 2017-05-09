@@ -21,6 +21,7 @@ public abstract class Player {
     protected List<AttackSpell> attackSpellInventory = new ArrayList<AttackSpell>();
     protected List<GenericSpell> genericSpellInventory = new ArrayList<GenericSpell>();
     protected List<Potion> potionInventory = new ArrayList<Potion>();
+    protected List<Item> itemInventory = new ArrayList<Item>();
 
     protected final int MAX_HEALTH = 100;
     protected final int MAX_LEVEL = 100;
