@@ -23,12 +23,17 @@ public class ForceBolt implements AttackSpell {
     if(player.getPower() < REQ_POWER) return false;
     Random random = new Random();
     Scanner s = new Scanner(System.in);
-    System.out.println("Which enemy would you like to target? Options are:");
-    for (int i=0;i<enemies.size();i++) {
-      System.out.println(i+". " + enemies.get(i));
+    if(enemies.size() == 0) return false;
+    int selection;
+    if(enemies.size() == 1) selection = 0;
+    else {
+      System.out.println("Which enemy would you like to target? Options are:");
+      for (int i=0;i<enemies.size();i++) {
+        System.out.println(i+". " + enemies.get(i));
+      }
+      selection = s.nextInt();
+      s.nextLine(); //Eat newline given to us
     }
-    int selection = s.nextInt();
-    s.nextLine(); //Eat newline given to us
     if (selection < 0 || selection >= enemies.size()) return false;
     if (random.nextInt(100) < HIT_CHANCE) {
       enemies.get(selection).dealDamage(DAMAGE);
