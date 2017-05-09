@@ -13,26 +13,27 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 
 public abstract class Player {
     public final String name;
-    protected int health;
-    protected int power; //Magical power
-    protected int level;
-    protected int enemiesDefeated;
+    protected byte health;
+    protected byte armorProtection;
+    protected byte level;
+    protected short power; //Magical power
+    protected short enemiesDefeated;
     protected Random random = new Random(); //RNG
     protected List<AttackSpell> attackSpellInventory = new ArrayList<AttackSpell>();
     protected List<GenericSpell> genericSpellInventory = new ArrayList<GenericSpell>();
     protected List<Potion> potionInventory = new ArrayList<Potion>();
 
-    protected final int MAX_HEALTH = 100;
-    protected final int MAX_LEVEL = 100;
-    protected int MAX_POWER; //Max magical power
-    protected int POWER_MULTIPLIER = 3; //MAX_POWER = POWER_MULTIPLIER * level
-    protected int HIT_CHANCE = 80;
+    protected final byte MAX_HEALTH = 100;
+    protected final byte MAX_LEVEL = 100;
+    protected byte POWER_MULTIPLIER = 3; //MAX_POWER = POWER_MULTIPLIER * level
+    protected byte HIT_CHANCE = 80;
+    protected short MAX_POWER; //Max magical power
 
     public Player(String name) {
         this.name = name;
         this.health = 100;
         this.level = 1;
-        this.MAX_POWER = 3*level; //Max magical power
+        this.MAX_POWER = 3; //Max magical power
         this.power = this.MAX_POWER; //Fill power
     }
 
@@ -253,7 +254,7 @@ public abstract class Player {
      */
     private void levelUp() {
       System.out.println("Congratulations! You are now level " + ++level + "!");
-      this.MAX_POWER = POWER_MULTIPLIER*level; //Updates max power
+      this.MAX_POWER = (short)(POWER_MULTIPLIER*level); //Updates max power
       power = MAX_POWER; //Instantly fills up power
     }
 
