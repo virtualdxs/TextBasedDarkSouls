@@ -23,6 +23,7 @@ public abstract class Player {
     protected List<AttackSpell> attackSpellInventory = new ArrayList<AttackSpell>();
     protected List<GenericSpell> genericSpellInventory = new ArrayList<GenericSpell>();
     protected List<Potion> potionInventory = new ArrayList<Potion>();
+    protected List<Item> itemInventory = new ArrayList<Item>();
 
     protected final byte MAX_HEALTH = 100;
     protected final byte MAX_LEVEL = 100;
@@ -245,6 +246,14 @@ public abstract class Player {
       if (selection < 0 || selection > potionInventory.size() - 1) return false;
       potionInventory.remove(selection).drink();
       return true;
+    }
+
+   /**
+    * Gives the player an item
+    * @param item The item to give
+    */
+    public void giveItem(Item item) {
+      itemInventory.add(item);
     }
 
     /**
