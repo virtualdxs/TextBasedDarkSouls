@@ -5,5 +5,5 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 public interface Boss {
   String getName();
   int getHealth();
-  void dealDamage();
+  void dealDamage(int damage);
 }

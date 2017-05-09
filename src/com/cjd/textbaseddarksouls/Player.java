@@ -240,6 +240,14 @@ public abstract class Player {
       return true;
     }
 
+   /**
+    * Gives the player an item
+    * @param item The item to give
+    */
+    public void giveItem(Item item) {
+      itemInventory.add(item);
+    }
+
     /**
      * Takes care of what needs to be done after a turn.
      *  - Regens power and health
