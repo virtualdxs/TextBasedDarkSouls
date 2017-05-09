@@ -48,11 +48,8 @@ public abstract class Player {
       System.out.println("Hello, "+name+"! What class do you want to play?");
       PlayerClass playerClass = null;
       while (playerClass == null) {
-      System.out.println("Valid options are Ranged, Warrior, and Wizard.");
+      System.out.println("Valid options are Warrior and Wizard.");
         switch (scanner.nextLine().toLowerCase()) {
-        case "ranged":
-          playerClass = PlayerClass.RAN;
-          break;
         case "warrior":
           playerClass = PlayerClass.WAR;
           break;
@@ -74,8 +71,6 @@ public abstract class Player {
      */
     public static Player newPlayer(PlayerClass playerClass,String name) {
       switch (playerClass) {
-        case RAN:
-          return new Ranged(name);
         case WAR:
           return new Warrior(name);
         case WIZ:
@@ -270,7 +265,6 @@ public abstract class Player {
     public int getHealth() { return health; }
 
     private enum PlayerClass {
-      RAN("Ranged"),
       WAR("Warrior"),
       WIZ("Wizard");
 
