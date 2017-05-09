@@ -34,15 +34,11 @@ public abstract class Master {
 
     public static void main(String[] args) {
         System.out.println("Devmode: " + devmode);
-        printStats();
         player.setArmorProtection(25);
-        printStats();
-        player.dealDamage(100);
-        printStats();
-        System.exit(0);
         System.out.println("You are a " + player + ".");
         player.addEnemiesDefeated(16);
         player.runTurn();
+        printStats();
         System.out.println("Giving player spells and potions...");
         player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
         player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.ForceBolt());
