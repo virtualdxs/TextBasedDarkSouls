@@ -71,7 +71,7 @@ public class CombatContext {
         System.out.println("The "+ enemy.getClass().getSimpleName() +" misses!");
       } else {
         System.out.print("The "+ enemy.getClass().getSimpleName() +" hits! ");
-        System.out.println("It deals " + damage + " damage!");
+        System.out.println("It does " + damage * ((100-player.getArmorProtection())/100.0) + " damage!");
         player.dealDamage(damage);
         System.out.println("Your health is now " + player.getHealth() + ".");
       }

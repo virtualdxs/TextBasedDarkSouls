@@ -10,29 +10,33 @@ import java.util.ArrayList;
 import com.cjd.textbaseddarksouls.spell.AttackSpell;
 import com.cjd.textbaseddarksouls.spell.GenericSpell;
 import com.cjd.textbaseddarksouls.player.*;
+import com.cjd.textbaseddarksouls.exception.TooMuchArmorException;
 
 public abstract class Player {
     public final String name;
-    protected int health;
-    protected int power; //Magical power
-    protected int level;
-    protected int enemiesDefeated;
+    protected byte health;
+    protected byte armorProtection; //Percent of damage that armor negates
+    protected byte level;
+    protected short power; //Magical power
+    protected short enemiesDefeated;
     protected Random random = new Random(); //RNG
     protected List<AttackSpell> attackSpellInventory = new ArrayList<AttackSpell>();
     protected List<GenericSpell> genericSpellInventory = new ArrayList<GenericSpell>();
     protected List<Potion> potionInventory = new ArrayList<Potion>();
+    protected List<Item> itemInventory = new ArrayList<Item>();
 
-    protected final int MAX_HEALTH = 100;
-    protected final int MAX_LEVEL = 100;
-    protected int MAX_POWER; //Max magical power
-    protected int POWER_MULTIPLIER = 3; //MAX_POWER = POWER_MULTIPLIER * level
-    protected int HIT_CHANCE = 80;
+    protected final byte MAX_HEALTH = 100;
+    protected final byte MAX_LEVEL = 100;
+    protected byte POWER_MULTIPLIER = 3; //MAX_POWER = POWER_MULTIPLIER * level
+    protected byte HIT_CHANCE = 80;
+    protected short MAX_POWER; //Max magical power
 
     public Player(String name) {
         this.name = name;
         this.health = 100;
+        this.armorProtection = 0;
         this.level = 1;
-        this.MAX_POWER = 3*level; //Max magical power
+        this.MAX_POWER = 3; //Max magical power
         this.power = this.MAX_POWER; //Fill power
     }
 
@@ -48,11 +52,8 @@ public abstract class Player {
       System.out.println("Hello, "+name+"! What class do you want to play?");
       PlayerClass playerClass = null;
       while (playerClass == null) {
-      System.out.println("Valid options are Ranged, Warrior, and Wizard.");
+      System.out.println("Valid options are Warrior and Wizard.");
         switch (scanner.nextLine().toLowerCase()) {
-        case "ranged":
-          playerClass = PlayerClass.RAN;
-          break;
         case "warrior":
           playerClass = PlayerClass.WAR;
           break;
@@ -74,8 +75,6 @@ public abstract class Player {
      */
     public static Player newPlayer(PlayerClass playerClass,String name) {
       switch (playerClass) {
-        case RAN:
-          return new Ranged(name);
         case WAR:
           return new Warrior(name);
         case WIZ:
@@ -86,15 +85,25 @@ public abstract class Player {
     }
 
     /**
-     * Deals damage to the player
+     * Deals damage to the player.
      * @param points The number of health to subtract
      */
     public void dealDamage(int points) {
         if (devmode) return; //Prevent damage if in devmode
+        points *= (100-armorProtection)/100.0;
         if (points >= health) endGame(); //Enough damage to kill the player
         else health -= points;
     }
 
+    /**
+     * Deals damage to the player, without taking armor into account.
+     * @param points The number of health to subtract
+     */
+    public void dealDamageNoArmor(int points) {
+        if (devmode) return; //Prevent damage if in devmode
+        if (points >= health) endGame(); //Enough damage to kill the player
+        else health -= points;
+    }
     /**
      * Heals the player
      * @param points The number of points to add
@@ -239,6 +248,14 @@ public abstract class Player {
       return true;
     }
 
+   /**
+    * Gives the player an item
+    * @param item The item to give
+    */
+    public void giveItem(Item item) {
+      itemInventory.add(item);
+    }
+
     /**
      * Takes care of what needs to be done after a turn.
      *  - Regens power and health
@@ -258,7 +275,7 @@ public abstract class Player {
      */
     private void levelUp() {
       System.out.println("Congratulations! You are now level " + ++level + "!");
-      this.MAX_POWER = POWER_MULTIPLIER*level; //Updates max power
+      this.MAX_POWER = (short)(POWER_MULTIPLIER*level); //Updates max power
       power = MAX_POWER; //Instantly fills up power
     }
 
@@ -268,9 +285,14 @@ public abstract class Player {
     public int getPower(){ return power; }
     public int getMaxPower(){ return MAX_POWER; }
     public int getHealth() { return health; }
+    public int getArmorProtection() { return armorProtection; }
+
+    public void setArmorProtection(int newArmor) {
+      if (newArmor<0||newArmor>50) throw new TooMuchArmorException();
+      armorProtection = (byte)newArmor;
+    }
 
     private enum PlayerClass {
-      RAN("Ranged"),
       WAR("Warrior"),
       WIZ("Wizard");
 
