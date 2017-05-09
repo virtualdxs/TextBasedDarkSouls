@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.cjd.textbaseddarksouls.spell.AttackSpell;
 import com.cjd.textbaseddarksouls.spell.GenericSpell;
 import com.cjd.textbaseddarksouls.player.*;
+import com.cjd.textbaseddarksouls.exception.TooMuchArmorException;
 
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
@@ -83,7 +84,7 @@ public abstract class Player {
     }
 
     /**
-     * Deals damage to the player
+     * Deals damage to the player.
      * @param points The number of health to subtract
      */
     public void dealDamage(int points) {
@@ -93,6 +94,15 @@ public abstract class Player {
         else health -= points;
     }
 
+    /**
+     * Deals damage to the player, without taking armor into account.
+     * @param points The number of health to subtract
+     */
+    public void dealDamageNoArmor(int points) {
+        if (devmode) return; //Prevent damage if in devmode
+        if (points >= health) endGame(); //Enough damage to kill the player
+        else health -= points;
+    }
     /**
      * Heals the player
      * @param points The number of points to add
@@ -267,6 +277,11 @@ public abstract class Player {
     public int getMaxPower(){ return MAX_POWER; }
     public int getHealth() { return health; }
     public int getArmorProtection() { return armorProtection; }
+
+    public void setArmorProtection(int newArmor) {
+      if (newArmor<0||newArmor>50) throw new TooMuchArmorException();
+      armorProtection = (byte)newArmor;
+    }
 
     private enum PlayerClass {
       WAR("Warrior"),
