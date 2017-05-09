@@ -14,7 +14,7 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 public abstract class Player {
     public final String name;
     protected byte health;
-    protected byte armorProtection;
+    protected byte armorProtection; //Percent of damage that armor negates
     protected byte level;
     protected short power; //Magical power
     protected short enemiesDefeated;
@@ -32,6 +32,7 @@ public abstract class Player {
     public Player(String name) {
         this.name = name;
         this.health = 100;
+        this.armorProtection = 0;
         this.level = 1;
         this.MAX_POWER = 3; //Max magical power
         this.power = this.MAX_POWER; //Fill power
@@ -87,6 +88,7 @@ public abstract class Player {
      */
     public void dealDamage(int points) {
         if (devmode) return; //Prevent damage if in devmode
+        points *= (100-armorProtection)/100.0;
         if (points >= health) endGame(); //Enough damage to kill the player
         else health -= points;
     }
@@ -264,6 +266,7 @@ public abstract class Player {
     public int getPower(){ return power; }
     public int getMaxPower(){ return MAX_POWER; }
     public int getHealth() { return health; }
+    public int getArmorProtection() { return armorProtection; }
 
     private enum PlayerClass {
       WAR("Warrior"),
