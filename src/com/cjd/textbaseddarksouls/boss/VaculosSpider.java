@@ -4,8 +4,8 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 
 import com.cjd.textbaseddarksouls.Boss;
 
-public class StormGiant extends Boss {
-  private final String name = "Bob the Storm Giant";
+public class VaculosSpider extends Boss {
+  private final String name = "Rom the Vaculos Spider";
   private int health = 100;
 
   public String getName() { return name; }
@@ -14,4 +14,5 @@ public class StormGiant extends Boss {
     if (damage >= health) onDeath();
     else health -= damage;
   }
+
 }

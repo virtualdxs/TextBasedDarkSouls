@@ -5,7 +5,7 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import com.cjd.textbaseddarksouls.Boss;
 import com.cjd.textbaseddarksouls.item.HerringA;
 
-public class MrHerring implements Boss {
+public class MrHerring extends Boss {
   private final String name = "Mr. Herring";
   private int health = 1000;
 
