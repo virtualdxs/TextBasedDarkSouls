@@ -13,7 +13,7 @@ import com.cjd.textbaseddarksouls.exception.TooMuchArmorException;
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 public abstract class Player {
-    public final String name;
+    private final String name;
     protected byte health;
     protected byte armorProtection; //Percent of damage that armor negates
     protected byte level;
@@ -281,8 +281,9 @@ public abstract class Player {
       power = MAX_POWER; //Instantly fills up power
     }
 
-    public String toString() { return "level " + level + " " + this.getClass().getSimpleName()+" with " + health + " health"; }
+    public String toString() { return name + ", a level " + level + " " + this.getClass().getSimpleName()+" with " + health + " health"; }
 
+    public String getName(){ return name; }
     public int getLevel(){ return level; }
     public int getPower(){ return power; }
     public int getMaxPower(){ return MAX_POWER; }
