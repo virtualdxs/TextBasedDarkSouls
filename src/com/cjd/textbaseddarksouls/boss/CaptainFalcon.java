@@ -6,7 +6,7 @@ import com.cjd.textbaseddarksouls.Boss;
 
 public class CaptainFalcon extends Boss {
   private final String name = "Captain Falcon";
-  private int health = 100;
+  private int health = 300;
 
   public String getName() { return name; }
   public int getHealth() { return health; }

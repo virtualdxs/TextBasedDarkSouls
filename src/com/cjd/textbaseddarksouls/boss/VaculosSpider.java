@@ -6,7 +6,7 @@ import com.cjd.textbaseddarksouls.Boss;
 
 public class VaculosSpider extends Boss {
   private final String name = "Rom the Vaculos Spider";
-  private int health = 100;
+  private int health = 300;
 
   public String getName() { return name; }
   public int getHealth() { return health; }
