@@ -10,7 +10,7 @@ public class CombatContext {
   private List<Enemy> enemies;
   private Scanner s = new Scanner(System.in);
 
-  private final int SLEEP_TIME = 750; //Time to sleep between attacks
+  private final int SLEEP_TIME = 750; //Time to sleep between attacks, in milliseconds
 
   public CombatContext() {
     enemies = new ArrayList<Enemy>();
@@ -71,7 +71,7 @@ public class CombatContext {
         System.out.println("The "+ enemy.getClass().getSimpleName() +" misses!");
       } else {
         System.out.print("The "+ enemy.getClass().getSimpleName() +" hits! ");
-        System.out.println("It does " + damage * ((100-player.getArmorProtection())/100.0) + " damage!");
+        System.out.println("It does " + (int)((damage * (100-player.getArmorProtection())/100.0)+0.5) + " damage!");
         player.dealDamage(damage);
         System.out.println("Your health is now " + player.getHealth() + ".");
       }

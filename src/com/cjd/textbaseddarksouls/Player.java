@@ -90,7 +90,7 @@ public abstract class Player {
      */
     public void dealDamage(int points) {
         if (devmode) return; //Prevent damage if in devmode
-        points *= (100-armorProtection)/100.0;
+        points = (int)((points * (100-armorProtection)/100.0)+0.5);
         if (points >= health) endGame(); //Enough damage to kill the player
         else health -= points;
     }
@@ -104,6 +104,7 @@ public abstract class Player {
         if (points >= health) endGame(); //Enough damage to kill the player
         else health -= points;
     }
+
     /**
      * Heals the player
      * @param points The number of points to add
