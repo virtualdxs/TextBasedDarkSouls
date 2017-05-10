@@ -4,9 +4,9 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 
 import com.cjd.textbaseddarksouls.Boss;
 
-public class VaculosSpider extends Boss {
-  private final String name = "Rom the Vaculos Spider";
-  private int health = 100;
+public class WorldEater extends Boss {
+  private final String name = "Nha'az Al Guhl, Eater of Worlds";
+  private int health = 1000;
 
   public String getName() { return name; }
   public int getHealth() { return health; }

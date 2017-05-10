@@ -7,7 +7,7 @@ import com.cjd.textbaseddarksouls.item.HerringA;
 
 public class MrHerring extends Boss {
   private final String name = "Mr. Herring";
-  private int health = 1000;
+  private int health = 1337;
 
   public String getName() { return name; }
   public int getHealth() { return health; }
