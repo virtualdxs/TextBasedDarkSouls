@@ -120,10 +120,11 @@ public abstract class Player {
      * @param energy The amount of energy to subtract
      */
     public void usePower(int usedPower) {
-      if (devmode) return; //Prevent damage if in devmode
+      if (devmode) return; //Prevent using power if in devmode
       if (usedPower < 1) throw new IllegalArgumentException();
       power -= usedPower;
     }
+
     /**
      * Adds to the enemies defeated counter.
      * @param enemies The number of enemies to add to the counter
@@ -257,23 +258,23 @@ public abstract class Player {
       itemInventory.add(item);
     }
 
-    /**
-     * Takes care of what needs to be done after a turn.
-     *  - Regens power and health
-     *  - Levels up player if needed
-     * NOTE: Does NOT get run during combat.
-     * Player levels up when they have defeated 2^n enemies where n is the level they are moving to.
-     * For example, a Level 3 player must have defeated a total of 2^4 (16) enemies in order to level up.
-     */
+   /**
+    * Takes care of what needs to be done after a turn.
+    *  - Regens power and health
+    *  - Levels up player if needed
+    * NOTE: Does NOT get run during combat.
+    * Player levels up when they have defeated 2^n enemies where n is the level they are moving to.
+    * For example, a Level 3 player must have defeated a total of 2^4 (16) enemies in order to level up.
+    */
     public void runTurn() {
       if (power < MAX_POWER) power++;
       if (health < MAX_HEALTH) health++;
       while (enemiesDefeated >= Math.pow(2,level+1)) levelUp();
     }
 
-    /**
-     * Levels up the player.
-     */
+   /**
+    * Levels up the player.
+    */
     private void levelUp() {
       System.out.println("Congratulations! You are now level " + ++level + "!");
       this.MAX_POWER = (short)(POWER_MULTIPLIER*level); //Updates max power
