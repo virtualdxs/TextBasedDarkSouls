@@ -1,10 +1,10 @@
-package com.cjd.textbaseddarksouls.spell;
+package com.cjd.textbaseddarksouls.boss;
 
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 import com.cjd.textbaseddarksouls.Boss;
 
-public class StormGiant implements Boss {
+public class StormGiant extends Boss {
   private final String name = "Storm Giant";
   private int health = 100;
 

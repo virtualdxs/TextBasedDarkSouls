@@ -1,4 +1,4 @@
-package com.cjd.textbaseddarksouls.spell;
+package com.cjd.textbaseddarksouls.boss;
 
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
