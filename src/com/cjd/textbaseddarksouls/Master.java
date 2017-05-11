@@ -25,20 +25,23 @@ public abstract class Master {
   }
 
   public static void printStats() {
+    System.out.println("\n-----STATS-----");
     System.out.println("Current level: " + player.getLevel());
     System.out.println("Current health: " + player.getHealth());
     System.out.println("Current armor: " + player.getArmorProtection());
     System.out.println("Current power: " + player.getPower());
     System.out.println("Current max power: " + player.getMaxPower());
+    System.out.println();
   }
 
   public static void main(String[] args) {
     System.out.println("Devmode: " + devmode);
-    player.setArmorProtection(25);
-    System.out.println("You are a " + player + ".");
-    player.addEnemiesDefeated(16);
+    System.out.println("You are " + player + ".");
+    System.out.println("Leveling player to max...");
+    player.addEnemiesDefeated(1024);
     player.runTurn();
-    printStats();
+    System.out.println("Giving player max armor (you're going to need it)...");
+    player.setArmorProtection(50);
     System.out.println("Giving player spells and potions...");
     player.giveGenericSpell(new com.cjd.textbaseddarksouls.spell.Heal());
     player.giveAttackSpell(new com.cjd.textbaseddarksouls.spell.ForceBolt());
@@ -47,6 +50,7 @@ public abstract class Master {
     player.givePotion(new com.cjd.textbaseddarksouls.potion.HealingPotion());
     player.givePotion(new com.cjd.textbaseddarksouls.potion.HealingPotion());
     player.givePotion(new com.cjd.textbaseddarksouls.potion.ExtraHealingPotion());
+    printStats();
     System.out.println("Running a combat stage...");
     List<Enemy> enemyList = new ArrayList<Enemy>(15);
     enemyList.add(new Bandit());

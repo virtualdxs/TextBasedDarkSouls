@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import com.cjd.textbaseddarksouls.spell.AttackSpell;
 import com.cjd.textbaseddarksouls.spell.GenericSpell;
 import com.cjd.textbaseddarksouls.player.*;
-import com.cjd.textbaseddarksouls.exception.TooMuchArmorException;
+import com.cjd.textbaseddarksouls.exception.*;
 
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
@@ -269,13 +269,14 @@ public abstract class Player {
     public void runTurn() {
       if (power < MAX_POWER) power++;
       if (health < MAX_HEALTH) health++;
-      while (enemiesDefeated >= Math.pow(2,level+1)) levelUp();
+      while (level < 10 && enemiesDefeated >= Math.pow(2,level+1)) levelUp();
     }
 
    /**
     * Levels up the player.
     */
     private void levelUp() {
+      if (level >= 10) throw new AboveMaxLevelException();
       System.out.println("Congratulations! You are now level " + ++level + "!");
       this.MAX_POWER = (short)(POWER_MULTIPLIER*level); //Updates max power
       power = MAX_POWER; //Instantly fills up power

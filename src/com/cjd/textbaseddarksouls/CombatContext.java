@@ -82,12 +82,12 @@ public class CombatContext {
   public void runCombat() {
     int enemiesToDefeat = enemies.size();
     int damage;
-    System.out.println("-----COMBAT-----");
+    System.out.println("\n-----COMBAT-----");
     while (enemies.size() > 0) {
       boolean done = false;
       int selection;
       while (!done) {
-        System.out.println("\nCurrent enemies:");
+        System.out.println("Current enemies:");
         for (int i=0;i<enemies.size();i++) {
           System.out.println(enemies.get(i));
         }
