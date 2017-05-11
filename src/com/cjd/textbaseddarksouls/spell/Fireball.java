@@ -35,6 +35,7 @@ public class Fireball implements AttackSpell {
       s.nextLine(); //Eat newline given to us
     }
     if (selection < 0 || selection >= enemies.size()) return false;
+    player.usePower(REQ_POWER);
     if (random.nextInt(100) < HIT_CHANCE) {
       int damage = random.nextInt(player.getLevel())+MIN_DAMAGE;
       enemies.get(selection).dealDamage(damage);
