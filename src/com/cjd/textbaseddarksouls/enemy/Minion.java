@@ -5,12 +5,9 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class Minion extends Enemy {
-    public Minion() {
-        MAX_HEALTH = 10;
-        health = 10;
-    }
-    protected void die() {
-        health = 0;
-        System.out.println("Minion ded");
-    }
+  public Minion() {
+    MAX_HEALTH = 5;
+    MAX_DAMAGE = 3;
+    health = 5;
+  }
 }

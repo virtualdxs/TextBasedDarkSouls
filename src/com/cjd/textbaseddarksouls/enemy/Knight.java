@@ -5,12 +5,9 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class Knight extends Enemy {
-    public Knight() {
-        MAX_HEALTH = 10;
-        health = 10;
-    }
-    protected void die() {
-        health = 0;
-        System.out.println("Knight ded");
-    }
+  public Knight() {
+    MAX_HEALTH = 25;
+    MAX_DAMAGE = 10;
+    health = 25;
+  }
 }
