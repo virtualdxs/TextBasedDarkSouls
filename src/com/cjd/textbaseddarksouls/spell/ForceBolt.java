@@ -8,14 +8,14 @@ import java.util.Random;
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class ForceBolt implements AttackSpell {
-  public static final int DAMAGE = 15;
-  public static final int MIN_LEVEL= 3;
+  public static final int MIN_DAMAGE = 10;
+  public static final int MIN_LEVEL= 1;
   public static final int REQ_POWER = 5;
   public static final int HIT_CHANCE = 75;
 
   public int getReqPower() { return REQ_POWER; }
   public int getMinLevel() { return MIN_LEVEL; }
-  
+
   public String toString() { return "Force Bolt"; }
 
   public boolean cast(List<Enemy> enemies) {
@@ -36,8 +36,9 @@ public class ForceBolt implements AttackSpell {
     }
     if (selection < 0 || selection >= enemies.size()) return false;
     if (random.nextInt(100) < HIT_CHANCE) {
-      enemies.get(selection).dealDamage(DAMAGE);
-      System.out.println("The spell hits the " + enemies.get(selection).getClass().getSimpleName() + ", dealing " + DAMAGE + " damage!");
+      int damage = random.nextInt(player.getLevel())+MIN_DAMAGE;
+      enemies.get(selection).dealDamage(damage);
+      System.out.println("The spell hits the " + enemies.get(selection).getClass().getSimpleName() + ", dealing " + damage + " damage!");
     } else {
       System.out.println("The spell misses!");
     }
