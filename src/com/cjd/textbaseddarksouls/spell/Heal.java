@@ -5,8 +5,8 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 public class Heal implements GenericSpell {
   private static final int MIN_LEVEL = 4;
   private static final int REQ_POWER = 10;
-  private static final int BOOST_AMOUNT = 5;
-  
+  private static final int BOOST_MINIMUM = 5;
+
   public int getMinLevel() {return MIN_LEVEL;}
   public int getReqPower() {return REQ_POWER;}
 
@@ -16,8 +16,9 @@ public class Heal implements GenericSpell {
     if(player.getLevel() < MIN_LEVEL) throw new com.cjd.textbaseddarksouls.exception.LevelTooLowException();
     if(player.getPower() < REQ_POWER) return false;
     player.usePower(REQ_POWER);
-    player.heal(BOOST_AMOUNT);
-    System.out.println("Healed 5 health.");
+    int boost = player.getLevel() + BOOST_MINIMUM;
+    player.heal(boost);
+    System.out.println("Healed " + boost + " health.");
     return true;
   }
 }
