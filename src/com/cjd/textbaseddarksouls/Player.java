@@ -14,6 +14,7 @@ import com.cjd.textbaseddarksouls.exception.*;
 
 public abstract class Player {
     private final String name;
+    private final PlayerClass playerClass;
     protected byte health;
     protected byte armorProtection; //Percent of damage that armor negates
     protected byte level;
@@ -31,8 +32,9 @@ public abstract class Player {
     protected byte HIT_CHANCE = 80;
     protected short MAX_POWER; //Max magical power
 
-    public Player(String name) {
+    public Player(String name,PlayerClass playerClass) {
         this.name = name;
+        this.playerClass = playerClass;
         this.health = 100;
         this.armorProtection = 0;
         this.level = 1;
@@ -285,6 +287,7 @@ public abstract class Player {
     public String toString() { return name + ", a level " + level + " " + this.getClass().getSimpleName()+" with " + health + " health"; }
 
     public String getName(){ return name; }
+    public PlayerClass getPlayerClass(){ return playerClass; }
     public int getLevel(){ return level; }
     public int getPower(){ return power; }
     public int getMaxPower(){ return MAX_POWER; }
@@ -296,7 +299,7 @@ public abstract class Player {
       armorProtection = (byte)newArmor;
     }
 
-    private enum PlayerClass {
+    public enum PlayerClass {
       WAR("Warrior"),
       WIZ("Wizard");
 
