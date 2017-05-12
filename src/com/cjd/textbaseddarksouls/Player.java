@@ -139,7 +139,7 @@ public abstract class Player {
     */
     public int attack() {
       //Calculate hit or miss;damage is 5 <= rand <= level+9
-      return random.nextInt(100) > HIT_CHANCE ? 0 : random.nextInt(level+4)+5;
+      return random.nextInt(100) > HIT_CHANCE ? 0 : random.nextInt(3*level+4)+5;
     }
 
     /**
