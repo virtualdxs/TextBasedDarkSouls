@@ -7,7 +7,7 @@ import com.cjd.textbaseddarksouls.Enemy;
 public class Dragon extends Enemy {
   public Dragon() {
     MAX_HEALTH = 75;
-    MAX_DAMAGE = 20;
+    MAX_DAMAGE = 30;
     health = 75;
   }
 }
