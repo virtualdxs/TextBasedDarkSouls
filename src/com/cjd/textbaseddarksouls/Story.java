@@ -29,7 +29,7 @@ public abstract class Story {
         System.out.println("You remain on the ground.");
         break;
       default:
-        System.out.println("how the hell did you get to this statement"); //getIntResponse should prevent this
+        throw new java.lang.IllegalArgumentException("how the hell did you get to this statement"); //getIntResponse should prevent this
     }
     System.out.println("The man continues with his words, saying \"Anyways, I need your help. Some \"Supreme Evil\" or whatever killed my family. Since I am really old, weak, hunched over and generally weak I couldn’t do it myself and I also just don’t really want to. I found your corpse and revived you. So now you’re going to go off and kill them. I will give you a  magiC potion. So you can go and find the people who killed them. Thx mane.”");
     System.out.println("You are sent on your way, on a quest to kill some guys that have nothing to do with you or your life.");
