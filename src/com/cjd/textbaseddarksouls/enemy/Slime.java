@@ -5,12 +5,9 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class Slime extends Enemy {
-    public Slime() {
-        MAX_HEALTH = 10;
-        health = 10;
-    }
-    protected void die() {
-        health = 0;
-        System.out.println("Slime ded");
-    }
+  public Slime() {
+    MAX_HEALTH = 5;
+    MAX_DAMAGE = 2;
+    health = 5;
+  }
 }

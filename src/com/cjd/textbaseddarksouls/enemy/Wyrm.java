@@ -5,12 +5,9 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class Wyrm extends Enemy {
-    public Wyrm() {
-        MAX_HEALTH = 10;
-        health = 10;
-    }
-    protected void die() {
-        health = 0;
-        System.out.println("Wyrm ded");
-    }
+  public Wyrm() {
+    MAX_HEALTH = 70;
+    MAX_DAMAGE = 30;
+    health = 70;
+  }
 }

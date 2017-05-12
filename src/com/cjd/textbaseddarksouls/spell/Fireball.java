@@ -8,9 +8,9 @@ import java.util.Random;
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class Fireball implements AttackSpell {
-  public static final int DAMAGE = 15;
-  public static final int MIN_LEVEL= 3;
-  public static final int REQ_POWER = 5;
+  public static final int MIN_DAMAGE = 30;
+  public static final int MIN_LEVEL= 4;
+  public static final int REQ_POWER = 15;
   public static final int HIT_CHANCE = 75;
 
   public int getReqPower() { return REQ_POWER; }
@@ -35,9 +35,11 @@ public class Fireball implements AttackSpell {
       s.nextLine(); //Eat newline given to us
     }
     if (selection < 0 || selection >= enemies.size()) return false;
+    player.usePower(REQ_POWER);
     if (random.nextInt(100) < HIT_CHANCE) {
-      enemies.get(selection).dealDamage(DAMAGE);
-      System.out.println("The fireball hits the " + enemies.get(selection).getClass().getSimpleName() + ", dealing " + DAMAGE + " damage!");
+      int damage = random.nextInt(player.getLevel())+MIN_DAMAGE;
+      enemies.get(selection).dealDamage(damage);
+      System.out.println("The fireball hits the " + enemies.get(selection).getClass().getSimpleName() + ", dealing " + damage + " damage!");
     } else {
       System.out.println("The fireball misses!");
     }

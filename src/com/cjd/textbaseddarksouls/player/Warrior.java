@@ -15,7 +15,7 @@ public class Warrior extends Player {
     * @return int Damage of the attack
     */
     public int attack() {
-      //Calculate hit or miss;damage is random between 8 and 18 (3 point Warrior damage bonus)
-      return random.nextInt(100) > HIT_CHANCE ? 0 : random.nextInt(10)+8;
+      //Calculate hit or miss; damage is 10 <= rand < level+14 (5 point Warrior bonus)
+      return random.nextInt(100) > HIT_CHANCE ? 0 : random.nextInt(level+4)+10;
     }
 }

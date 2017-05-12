@@ -5,12 +5,9 @@ import static com.cjd.textbaseddarksouls.Master.*; //Give access to master conte
 import com.cjd.textbaseddarksouls.Enemy;
 
 public class Dwarf extends Enemy {
-    public Dwarf() {
-        MAX_HEALTH = 10;
-        health = 10;
-    }
-    protected void die() {
-        health = 0;
-        System.out.println("Dwarf ded");
-    }
+  public Dwarf() {
+    MAX_HEALTH = 10;
+    MAX_DAMAGE = 5;
+    health = 10;
+  }
 }

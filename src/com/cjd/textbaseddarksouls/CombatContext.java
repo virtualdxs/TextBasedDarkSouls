@@ -10,7 +10,7 @@ public class CombatContext {
   private List<Enemy> enemies;
   private Scanner s = new Scanner(System.in);
 
-  private final int SLEEP_TIME = 750; //Time to sleep between attacks
+  private final int SLEEP_TIME = 750; //Time to sleep between attacks, in milliseconds
 
   public CombatContext() {
     enemies = new ArrayList<Enemy>();
@@ -43,8 +43,8 @@ public class CombatContext {
     Enemy target = enemies.get(targetNum);
     int damage = player.attack();
     if (damage > 0) {
-      target.dealDamage(damage);
       System.out.println("You hit the " + target.getClass().getSimpleName() + ", doing "+ damage + " damage!");
+      target.dealDamage(damage);
     } else {
       System.out.println("You miss the " + target.getClass().getSimpleName() + "!");
     }
@@ -71,7 +71,7 @@ public class CombatContext {
         System.out.println("The "+ enemy.getClass().getSimpleName() +" misses!");
       } else {
         System.out.print("The "+ enemy.getClass().getSimpleName() +" hits! ");
-        System.out.println("It does " + damage * ((100-player.getArmorProtection())/100.0) + " damage!");
+        System.out.println("It does " + (int)((damage * (100-player.getArmorProtection())/100.0)+0.5) + " damage!");
         player.dealDamage(damage);
         System.out.println("Your health is now " + player.getHealth() + ".");
       }
@@ -82,12 +82,12 @@ public class CombatContext {
   public void runCombat() {
     int enemiesToDefeat = enemies.size();
     int damage;
-    System.out.println("-----COMBAT-----");
+    System.out.println("\n-----COMBAT-----");
     while (enemies.size() > 0) {
       boolean done = false;
       int selection;
       while (!done) {
-        System.out.println("\nCurrent enemies:");
+        System.out.println("Current enemies:");
         for (int i=0;i<enemies.size();i++) {
           System.out.println(enemies.get(i));
         }

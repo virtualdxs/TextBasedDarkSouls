@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import com.cjd.textbaseddarksouls.spell.AttackSpell;
 import com.cjd.textbaseddarksouls.spell.GenericSpell;
 import com.cjd.textbaseddarksouls.player.*;
-import com.cjd.textbaseddarksouls.exception.TooMuchArmorException;
+import com.cjd.textbaseddarksouls.exception.*;
 
 public abstract class Player {
-    public final String name;
+    private final String name;
     protected byte health;
     protected byte armorProtection; //Percent of damage that armor negates
     protected byte level;
@@ -26,7 +26,7 @@ public abstract class Player {
     protected List<Item> itemInventory = new ArrayList<Item>();
 
     protected final byte MAX_HEALTH = 100;
-    protected final byte MAX_LEVEL = 100;
+    protected final byte MAX_LEVEL = 10;
     protected byte POWER_MULTIPLIER = 3; //MAX_POWER = POWER_MULTIPLIER * level
     protected byte HIT_CHANCE = 80;
     protected short MAX_POWER; //Max magical power
@@ -90,7 +90,7 @@ public abstract class Player {
      */
     public void dealDamage(int points) {
         if (devmode) return; //Prevent damage if in devmode
-        points *= (100-armorProtection)/100.0;
+        points = (int)((points * (100-armorProtection)/100.0)+0.5);
         if (points >= health) endGame(); //Enough damage to kill the player
         else health -= points;
     }
@@ -104,6 +104,7 @@ public abstract class Player {
         if (points >= health) endGame(); //Enough damage to kill the player
         else health -= points;
     }
+
     /**
      * Heals the player
      * @param points The number of points to add
@@ -119,10 +120,11 @@ public abstract class Player {
      * @param energy The amount of energy to subtract
      */
     public void usePower(int usedPower) {
-      if (devmode) return; //Prevent damage if in devmode
+      if (devmode) return; //Prevent using power if in devmode
       if (usedPower < 1) throw new IllegalArgumentException();
       power -= usedPower;
     }
+
     /**
      * Adds to the enemies defeated counter.
      * @param enemies The number of enemies to add to the counter
@@ -136,8 +138,8 @@ public abstract class Player {
     * @return int Damage of the attack
     */
     public int attack() {
-      //Calculate hit or miss;damage is random between 5 and 15
-      return random.nextInt(100) > HIT_CHANCE ? 0 : random.nextInt(10)+6;
+      //Calculate hit or miss;damage is 5 <= rand <= level+9
+      return random.nextInt(100) > HIT_CHANCE ? 0 : random.nextInt(3*level+4)+5;
     }
 
     /**
@@ -256,31 +258,33 @@ public abstract class Player {
       itemInventory.add(item);
     }
 
-    /**
-     * Takes care of what needs to be done after a turn.
-     *  - Regens power and health
-     *  - Levels up player if needed
-     * NOTE: Does NOT get run during combat.
-     * Player levels up when they have defeated 2^n enemies where n is the level they are moving to.
-     * For example, a Level 3 player must have defeated a total of 2^4 (16) enemies in order to level up.
-     */
+   /**
+    * Takes care of what needs to be done after a turn.
+    *  - Regens power and health
+    *  - Levels up player if needed
+    * NOTE: Does NOT get run during combat.
+    * Player levels up when they have defeated 2^n enemies where n is the level they are moving to.
+    * For example, a Level 3 player must have defeated a total of 2^4 (16) enemies in order to level up.
+    */
     public void runTurn() {
       if (power < MAX_POWER) power++;
       if (health < MAX_HEALTH) health++;
-      while (enemiesDefeated >= Math.pow(2,level+1)) levelUp();
+      while (level < MAX_LEVEL && enemiesDefeated >= Math.pow(2,level+1)) levelUp();
     }
 
-    /**
-     * Levels up the player.
-     */
+   /**
+    * Levels up the player.
+    */
     private void levelUp() {
+      if (level >= MAX_LEVEL) throw new AboveMaxLevelException();
       System.out.println("Congratulations! You are now level " + ++level + "!");
       this.MAX_POWER = (short)(POWER_MULTIPLIER*level); //Updates max power
       power = MAX_POWER; //Instantly fills up power
     }
 
-    public String toString() { return "level " + level + " " + this.getClass().getSimpleName()+" with " + health + " health"; }
+    public String toString() { return name + ", a level " + level + " " + this.getClass().getSimpleName()+" with " + health + " health"; }
 
+    public String getName(){ return name; }
     public int getLevel(){ return level; }
     public int getPower(){ return power; }
     public int getMaxPower(){ return MAX_POWER; }
