@@ -43,8 +43,8 @@ public class CombatContext {
     Enemy target = enemies.get(targetNum);
     int damage = player.attack();
     if (damage > 0) {
-      target.dealDamage(damage);
       System.out.println("You hit the " + target.getClass().getSimpleName() + ", doing "+ damage + " damage!");
+      target.dealDamage(damage);
     } else {
       System.out.println("You miss the " + target.getClass().getSimpleName() + "!");
     }
