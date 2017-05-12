@@ -26,7 +26,7 @@ public abstract class Player {
     protected List<Item> itemInventory = new ArrayList<Item>();
 
     protected final byte MAX_HEALTH = 100;
-    protected final byte MAX_LEVEL = 100;
+    protected final byte MAX_LEVEL = 10;
     protected byte POWER_MULTIPLIER = 3; //MAX_POWER = POWER_MULTIPLIER * level
     protected byte HIT_CHANCE = 80;
     protected short MAX_POWER; //Max magical power
@@ -269,14 +269,14 @@ public abstract class Player {
     public void runTurn() {
       if (power < MAX_POWER) power++;
       if (health < MAX_HEALTH) health++;
-      while (level < 10 && enemiesDefeated >= Math.pow(2,level+1)) levelUp();
+      while (level < MAX_LEVEL && enemiesDefeated >= Math.pow(2,level+1)) levelUp();
     }
 
    /**
     * Levels up the player.
     */
     private void levelUp() {
-      if (level >= 10) throw new AboveMaxLevelException();
+      if (level >= MAX_LEVEL) throw new AboveMaxLevelException();
       System.out.println("Congratulations! You are now level " + ++level + "!");
       this.MAX_POWER = (short)(POWER_MULTIPLIER*level); //Updates max power
       power = MAX_POWER; //Instantly fills up power
