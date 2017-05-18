@@ -139,5 +139,51 @@ public abstract class Story {
     System.out.println(" Even so, he could crush you beneath his foot like you were a spider. So, try not to die, okay?");
 
     //BossFight drittsekk = new bossfight.Drittsekk();
+
+    System.out.println("Wait, you actually survived? I'm surprised. Looks like I'm losing 20 dollars.");
+    System.out.println("Anyways a big door in the back of the cathedral opens dramatically.");
+    System.out.println("You see a really, really big guy holding a staff sitting in a chair. In the sky, there is a big, red moon. I wonder how it became red.");
+    System.out.println("You approach the big, big man sitting in the chair. What do you do?");
+    System.out.println("1. Ask the guy for directions.");
+    System.out.println("2. Kill the guy");
+    int thing = 0;
+    boolean dead = false;
+    while(!dead){
+      switch(getIntResponse(2)){
+        case 1:
+        if(thing = 0){
+          System.out.println("The large, large guy just points at a river that is just ahead of the balcony. Maybe he wants you to jump into the river?");
+          thing++;
+        }
+        else if(thing = 1){
+          System.out.println("The giant, giant guy points at the river again, but a little more frustrated.");
+          thing++;
+        }
+        else{
+          System.out.println("He just sighs...");
+        }
+        break;
+        case 2:
+        if(thing = 0){
+          System.out.println("Well ok then....");
+          System.out.println("You brutally slaughter this large, large man whithout asking him where to go");
+          System.out.println("Just so you know, you were supposed to jump into the river");
+          dead = true;
+        }
+        else{
+          System.out.println("After getting your info, you kill the big, big man. Its not like he didn't deserve it, but that was kind of mean. He couldn't even move.");\
+          dead = true;
+        }
+      }
+    }
+    System.out.println("You now jump into the river.");
+    System.out.println("Oddly enough, you don't drown.");
+    System.out.println("Instead, you find yourself in a foggy, humid realm. The humidity makes you gag a bit.");
+    System.out.println("Where are you, you ask? Well I'm not sure, but theres a group of enemies approaching. Engage them in combat.");
+    CombatContext combat3 = new CombatContext();
+    combat3.add(new Knight());
+    combat3.add(new Knight());
+    combat3.add(new Kobold());
+    combat3.runCombat;
   }
 }
