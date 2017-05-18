@@ -42,5 +42,32 @@ public abstract class Story {
       default:
         throw new java.lang.IllegalArgumentException("playerClass is not WAR or WIZ");
     }
+    System.out.println("Upon stealing the old, defenseless man’s only means of survival, I mean, erm, “your weapons of immense prior sentimental value,” you set off on your grand adventure.");
+    System.out.println("After hours of traveling, you encounter a wild tutorial. *Wild pokemon music plays*");
+    CombatContext combat = new CombatContext();
+    combat.add(new Rat());
+    combat.runCombat;
+    System.out.println("Whew, that was tough.");
+    System.out.println("Okay not really, if you took any damage, you’re probably going to die.");
+    System.out.println("You continue on your lonely road, the only road you ever known. After a few more hours, you stumble upon a city.");
+    System.out.println("For unknown reasons that don’t exist, the city seems abandoned.");
+    System.out.println("The streets are empty.");
+    System.out.println("You are alone.");
+    System.out.println("Forever.");
+    System.out.println("Would you like to continue?")
+    System.out.println("Or are you too weak?");
+    System.out.println("1. Enter the city");
+    System.out.println("2. Turn Back and leave");
+    switch(getIntResponse(2)){
+      case 1:
+      System.out.println("You continue into the city");
+      break;
+      case 2:
+      System.out.println("Game over. Good night. You little baby. Do you need a bottle, you pathetic excuse of a troglodyte? You want me to tuck you in? Well tough luck. You are supposed  to go into the city and find the guys who killed the man's family. So go into the city and never think of turning back again.");
+      System.out.println("You continue into the city with the crushing depression inflicted upon you weighing you down.");
+      break;
+      default:
+      throw new java.lang.IllegalArgumentException("Huh?");
+    }
   }
 }
