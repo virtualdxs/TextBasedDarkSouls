@@ -81,13 +81,13 @@ public abstract class Story {
     System.out.println("The most fragile enemy you will encounter!");
     System.out.println("You are a true hero.");
     System.out.println("After that intense battle, you get to take a glance at your surroundings.");
-    System.out.println("1. Look around the house");
-    System.out.println("2. Search the ghouls");
-    System.out.println("3. Go upstairs");
-    System.out.println("4. Leave");
 
     boolean done = false;
     while(!done){
+      System.out.println("1. Look around the house");
+      System.out.println("2. Search the ghouls");
+      System.out.println("3. Go upstairs");
+      System.out.println("4. Leave");
       switch(getIntResponse(4)){
         case 1:
         System.out.println("There’s nothing. What’d you expect, a gargantuan treasure trove? You’re literally in some random peasant’s house.");
@@ -143,27 +143,27 @@ public abstract class Story {
     System.out.println("Anyways a big door in the back of the cathedral opens dramatically.");
     System.out.println("You see a really, really big guy holding a staff sitting in a chair. In the sky, there is a big, red moon. I wonder how it became red.");
     System.out.println("You approach the big, big man sitting in the chair. What do you do?");
-    System.out.println("1. Ask the guy for directions.");
-    System.out.println("2. Kill the guy");
-    int thing = 0;
+    int askCounter = 0;
     boolean dead = false;
     while(!dead){
+      System.out.println("1. Ask the guy for directions.");
+      System.out.println("2. Kill the guy");
       switch(getIntResponse(2)){
         case 1:
-        if(thing == 0){
+        if(askCounter == 0){
           System.out.println("The large, large guy just points at a river that is just ahead of the balcony. Maybe he wants you to jump into the river?");
-          thing++;
+          askCounter++;
         }
-        else if(thing == 1){
+        else if(askCounter == 1){
           System.out.println("The giant, giant guy points at the river again, but a little more frustrated.");
-          thing++;
+          askCounter++;
         }
         else{
           System.out.println("He just sighs...");
         }
         break;
         case 2:
-        if(thing == 0){
+        if(askCounter == 0){
           System.out.println("Well ok then....");
           System.out.println("You brutally slaughter this large, large man whithout asking him where to go");
           System.out.println("Just so you know, you were supposed to jump into the river");
