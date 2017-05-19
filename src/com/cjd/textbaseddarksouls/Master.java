@@ -4,6 +4,7 @@ package com.cjd.textbaseddarksouls;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Scanner;
 import com.cjd.textbaseddarksouls.enemy.*;
 
 /**
@@ -24,19 +25,41 @@ public abstract class Master {
     System.exit(0); //Shut down entire JVM
   }
 
+  public static String getResponse() {
+    Scanner s = new Scanner(System.in);
+    String response = "";
+    while (response.equals("")) response = s.nextLine().toLowerCase();
+    return response;
+  }
+
+  public static int getIntResponse(int max) {
+    Scanner s = new Scanner(System.in);
+    int response = s.nextInt();
+    while (response < 1 || response > max) {
+      System.out.println("Please enter a number between 1 and " + max + ".");
+      response = s.nextInt();
+    }
+    return response;
+  }
+
   public static void printStats() {
     System.out.println("\n-----STATS-----");
     System.out.println("Current level: " + player.getLevel());
     System.out.println("Current health: " + player.getHealth());
+    System.out.println("Current max health: " + player.getMaxHealth());
     System.out.println("Current armor: " + player.getArmorProtection());
     System.out.println("Current power: " + player.getPower());
     System.out.println("Current max power: " + player.getMaxPower());
     System.out.println();
   }
 
+  public static void init() {} //Call this to initialize this class (i.e. create player)
+
   public static void main(String[] args) {
-    System.out.println("Devmode: " + devmode);
+    //System.out.println("Devmode: " + devmode);
     System.out.println("You are " + player + ".");
+    System.out.println("Giving player max health...");
+    player.heal(100);
     System.out.println("Leveling player to max...");
     player.addEnemiesDefeated(1024);
     player.runTurn();

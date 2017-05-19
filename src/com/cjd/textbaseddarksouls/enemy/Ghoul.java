@@ -8,6 +8,6 @@ public class Ghoul extends Enemy {
   public Ghoul() {
     MAX_HEALTH = 20;
     MAX_DAMAGE = 10;
-    health = 20;
+    health = 10;
   }
 }

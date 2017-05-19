@@ -20,7 +20,10 @@ public class ForceBolt implements AttackSpell {
 
   public boolean cast(List<Enemy> enemies) {
     if(player.getLevel() < MIN_LEVEL) throw new com.cjd.textbaseddarksouls.exception.LevelTooLowException();
-    if(player.getPower() < REQ_POWER) return false;
+    if(player.getPower() < REQ_POWER) {
+      System.out.println("Not enough power to cast that spell.");
+      return false;
+    }
     Random random = new Random();
     Scanner s = new Scanner(System.in);
     if(enemies.size() == 0) return false;

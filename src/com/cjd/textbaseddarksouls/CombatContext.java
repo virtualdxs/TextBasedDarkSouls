@@ -96,14 +96,13 @@ public class CombatContext {
         s.nextLine(); //Eat newline given to us
         switch (selection) {
           case 1:
-            playerCombat();
-            done = true;
+            done = playerCombat();
             break;
           case 2:
             done = player.castSpell(enemies);
             if (done) System.out.println("Your health is now " + player.getHealth() + ".");
             else {
-              System.out.println("Not enough power to cast that spell.");
+              //System.out.println("Not enough power to cast that spell.");
               for (int i=0;i<enemies.size();i++) {
                 Enemy enemy = enemies.get(i);
                 if (enemy.getHealth() == 0) { //Garbage collect dead enemies

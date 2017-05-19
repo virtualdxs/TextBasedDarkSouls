@@ -3,10 +3,11 @@ package com.cjd.textbaseddarksouls.player;
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 import com.cjd.textbaseddarksouls.Player;
+import com.cjd.textbaseddarksouls.Player.PlayerClass;
 
 public class Warrior extends Player {
     public Warrior(String name) {
-        super(name);
+        super(name,PlayerClass.WAR);
         HIT_CHANCE = 85; //5% Warrior hit chance bonus
     }
 
