@@ -173,6 +173,7 @@ public abstract class Story {
           System.out.println("After getting your info, you kill the big, big man. Its not like he didn't deserve it, but that was kind of mean. He couldn't even move.");
           dead = true;
         }
+        break;
         default:
         throw new java.lang.IllegalArgumentException("Huh?");
       }
