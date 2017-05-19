@@ -3,6 +3,7 @@ package com.cjd.textbaseddarksouls;
 import static com.cjd.textbaseddarksouls.Master.*; //Give access to master context
 
 import com.cjd.textbaseddarksouls.Player.PlayerClass;
+import com.cjd.textbaseddarksouls.enemy.*;
 
 public abstract class Story {
   public static void main(String[] args) {
@@ -46,7 +47,7 @@ public abstract class Story {
     System.out.println("After hours of traveling, you encounter a wild tutorial. *Wild pokemon music plays*");
     CombatContext combat = new CombatContext();
     combat.add(new Rat());
-    combat.runCombat;
+    combat.runCombat();
     System.out.println("Whew, that was tough.");
     System.out.println("Okay not really, if you took any damage, you’re probably going to die.");
     System.out.println("You continue on your lonely road, the only road you ever known. After a few more hours, you stumble upon a city.");
@@ -54,7 +55,7 @@ public abstract class Story {
     System.out.println("The streets are empty.");
     System.out.println("You are alone.");
     System.out.println("Forever.");
-    System.out.println("Would you like to continue?")
+    System.out.println("Would you like to continue?");
     System.out.println("Or are you too weak?");
     System.out.println("1. Enter the city");
     System.out.println("2. Turn Back and leave");
@@ -72,10 +73,10 @@ public abstract class Story {
     System.out.println("After hours of meandering about, you see an abandoned house that looks slightly more homely than the others. As you head inside, you hear a spooky sound rivet through the house.");
     System.out.println("As you head inside, you hear a spooky sound rivet through the house. On the floor, you see two ghouls feasting on the corpse of an unknown creature.");
     System.out.println("One of them snaps its head towards you, murder in its eyes. In a stupidly high pitched voice it exclaims “OMG, mooorrrreeeee foooood.” It then attacks you, as that is what ghouls do. The other one shouts “PELICAN, EEEEEEEEHHHHHHHHHH.”");
-    CombatContext combat2 = new CombatContext();
-    combat2.add(new Ghoul());
-    combat2.add(new Ghoul());
-    combat2.runCombat;
+    combat = new CombatContext();
+    combat.add(new Ghoul());
+    combat.add(new Ghoul());
+    combat.runCombat();
     System.out.println("Wow! You killed them!");
     System.out.println("The most fragile enemy you will encounter!");
     System.out.println("You are a true hero.");
@@ -103,13 +104,12 @@ public abstract class Story {
         break;
         default:
         throw new java.lang.IllegalArgumentException("Huh?");
-        break;
       }
     }
     System.out.println("As you observe the cool expanse of cobbled roads and darkened houses, you notice a rather large building in the center of town. You feel the compelling power of plot drawing you towards it. ");
     System.out.println("As the almighty force of the plot being inflicted on you pushes you to the towering behemoth of a building, you see a clearly marked, neatly kept area labeled “CHECKPOINT”");
     System.out.println("You continue on with your journey, towards the building you realize is a Cathedral, due to the amazing powers of sudden context. Inside the building is a immense throne, with a large shadowy figure settled upon it.");
-    System.out.println("Suddenly, for the purpose of advancing this story along at a rather quick pace, a bellowing voice booms from all around you:")
+    System.out.println("Suddenly, for the purpose of advancing this story along at a rather quick pace, a bellowing voice booms from all around you:");
     System.out.println("WHO DARES ENTER MY HOLY CATHEDRAL");
     System.out.println("MY MOST HOLY OF PLACES, THE MOST SACRED PLACE TO EVER GRACE THIS MISERABLE REALM?");
     System.out.println("WHO DARES COME TO THE HOME OF DRITTSEKK THE MIGHTY, DRITTSEKK THE POWERFUL");
@@ -133,7 +133,6 @@ public abstract class Story {
       break;
       default:
       throw new java.lang.IllegalArgumentException("Huh?");
-      break;
     }
     System.out.println("Good luck on this next fight, by the way. Can I give you a bit of a tip? This guy is a boss, and not a hard one.");
     System.out.println(" Even so, he could crush you beneath his foot like you were a spider. So, try not to die, okay?");
@@ -151,11 +150,11 @@ public abstract class Story {
     while(!dead){
       switch(getIntResponse(2)){
         case 1:
-        if(thing = 0){
+        if(thing == 0){
           System.out.println("The large, large guy just points at a river that is just ahead of the balcony. Maybe he wants you to jump into the river?");
           thing++;
         }
-        else if(thing = 1){
+        else if(thing == 1){
           System.out.println("The giant, giant guy points at the river again, but a little more frustrated.");
           thing++;
         }
@@ -164,30 +163,29 @@ public abstract class Story {
         }
         break;
         case 2:
-        if(thing = 0){
+        if(thing == 0){
           System.out.println("Well ok then....");
           System.out.println("You brutally slaughter this large, large man whithout asking him where to go");
           System.out.println("Just so you know, you were supposed to jump into the river");
           dead = true;
         }
         else{
-          System.out.println("After getting your info, you kill the big, big man. Its not like he didn't deserve it, but that was kind of mean. He couldn't even move.");\
+          System.out.println("After getting your info, you kill the big, big man. Its not like he didn't deserve it, but that was kind of mean. He couldn't even move.");
           dead = true;
         }
         default:
         throw new java.lang.IllegalArgumentException("Huh?");
-        break;
       }
     }
     System.out.println("You now jump into the river.");
     System.out.println("Oddly enough, you don't drown.");
     System.out.println("Instead, you find yourself in a foggy, humid realm. The humidity makes you gag a bit.");
     System.out.println("Where are you, you ask? Well I'm not sure, but theres a group of enemies approaching. Engage them in combat.");
-    CombatContext combat3 = new CombatContext();
-    combat3.add(new Knight());
-    combat3.add(new Knight());
-    combat3.add(new Kobold());
-    combat3.runCombat;
+    combat = new CombatContext();
+    combat.add(new Knight());
+    combat.add(new Knight());
+    combat.add(new Kobold());
+    combat.runCombat();
     System.out.println("Looks like you've got the hang of this combat stuff. Hope you can keep it up.");
     System.out.println("2 paths manifest in front of you. One on the left, aother on the right. Which one will you take?");
     System.out.println("1. Left.");
@@ -203,15 +201,15 @@ public abstract class Story {
       System.out.println("No scenery manifests, all that you see is a path of clearness in fog. The ground is also fog. Crazy, huh?");
       System.out.println("Uh oh. A group of enemies approach. A quite large group...");
       System.out.println("I hope you're ready!");
-      CombatContext combat4 = new CombatContext();
-      combat4.add(new Knight());
-      combat4.add(new Knight());
-      combat4.add(new Knight());
-      combat4.add(new Knight());
-      combat4.add(new Demon());
-      combat4.add(new Wyrm());
-      combat4.add(new Dwarf());
-      combat4.runCombat;
+      combat = new CombatContext();
+      combat.add(new Knight());
+      combat.add(new Knight());
+      combat.add(new Knight());
+      combat.add(new Knight());
+      combat.add(new Demon());
+      combat.add(new Wyrm());
+      combat.add(new Dwarf());
+      combat.runCombat();
       System.out.println("Wow. you're geting really good at this combat stuff.");
       System.out.println("There are a lot of bodies in front of you.");
       System.out.println("Wait... Do you hear that? It sounds like an engine...");
@@ -229,9 +227,8 @@ public abstract class Story {
       break;
       default:
       throw new java.lang.IllegalArgumentException("Huh?");
-      break;
     }
     System.out.println("To be continued....");
-    System.out.println("We ran out of time for the project.")
+    System.out.println("We ran out of time for the project.");
   }
 }
