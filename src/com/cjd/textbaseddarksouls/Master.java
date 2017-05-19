@@ -46,6 +46,7 @@ public abstract class Master {
     System.out.println("\n-----STATS-----");
     System.out.println("Current level: " + player.getLevel());
     System.out.println("Current health: " + player.getHealth());
+    System.out.println("Current max health: " + player.getMaxHealth());
     System.out.println("Current armor: " + player.getArmorProtection());
     System.out.println("Current power: " + player.getPower());
     System.out.println("Current max power: " + player.getMaxPower());
@@ -55,8 +56,10 @@ public abstract class Master {
   public static void init() {} //Call this to initialize this class (i.e. create player)
 
   public static void main(String[] args) {
-    System.out.println("Devmode: " + devmode);
+    //System.out.println("Devmode: " + devmode);
     System.out.println("You are " + player + ".");
+    System.out.println("Giving player max health...");
+    player.heal(100);
     System.out.println("Leveling player to max...");
     player.addEnemiesDefeated(1024);
     player.runTurn();

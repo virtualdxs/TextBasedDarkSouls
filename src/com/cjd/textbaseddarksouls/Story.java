@@ -188,7 +188,7 @@ public abstract class Story {
     combat.add(new Kobold());
     combat.runCombat();
     System.out.println("Looks like you've got the hang of this combat stuff. Hope you can keep it up.");
-    System.out.println("2 paths manifest in front of you. One on the left, aother on the right. Which one will you take?");
+    System.out.println("2 paths manifest in front of you. One on the left, another on the right. Which one will you take?");
     System.out.println("1. Left.");
     System.out.println("2. Right");
     switch(getIntResponse(2)){
@@ -231,5 +231,15 @@ public abstract class Story {
     }
     System.out.println("To be continued....");
     System.out.println("We ran out of time for the project.");
+    try {Thread.sleep(10000);} catch (java.lang.InterruptedException boi) {}
+    System.out.println("You're still here?");
+    try {Thread.sleep(3000);} catch (java.lang.InterruptedException boi) {}
+    System.out.println("It's over. There's nothing else.");
+    try {Thread.sleep(3000);} catch (java.lang.InterruptedException boi) {}
+    System.out.println("If I give you a fight, will you go away?");
+    try {Thread.sleep(3000);} catch (java.lang.InterruptedException boi) {}
+    System.out.println("Fine. Here you go.");
+    try {Thread.sleep(1500);} catch (java.lang.InterruptedException boi) {}
+    com.cjd.textbaseddarksouls.Master.main(new String[1]);
   }
 }

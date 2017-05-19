@@ -292,6 +292,7 @@ public abstract class Player {
     public int getPower(){ return power; }
     public int getMaxPower(){ return MAX_POWER; }
     public int getHealth() { return health; }
+    public int getMaxHealth(){ return MAX_HEALTH; }
     public int getArmorProtection() { return armorProtection; }
 
     public void setArmorProtection(int newArmor) {
