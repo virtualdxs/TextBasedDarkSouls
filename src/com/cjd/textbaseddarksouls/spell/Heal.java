@@ -14,7 +14,10 @@ public class Heal implements GenericSpell {
 
   public boolean cast() {
     if(player.getLevel() < MIN_LEVEL) throw new com.cjd.textbaseddarksouls.exception.LevelTooLowException();
-    if(player.getPower() < REQ_POWER) return false;
+    if(player.getPower() < REQ_POWER) {
+      System.out.println("Not enough power to cast that spell.");
+      return false;
+    }
     player.usePower(REQ_POWER);
     int boost = player.getLevel() + BOOST_MINIMUM;
     player.heal(boost);

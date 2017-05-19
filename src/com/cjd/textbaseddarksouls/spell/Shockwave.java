@@ -19,7 +19,10 @@ public class Shockwave implements AttackSpell {
 
   public boolean cast(List<Enemy> enemies) {
     if(player.getLevel() < MIN_LEVEL) throw new com.cjd.textbaseddarksouls.exception.LevelTooLowException();
-    if(player.getPower() < REQ_POWER) return false;
+    if(player.getPower() < REQ_POWER) {
+      System.out.println("Not enough power to cast that spell.");
+      return false;
+    }
     Random random = new Random();
     int damage = random.nextInt(player.getLevel()*2)+MIN_DAMAGE;
     for (int i=0;i<enemies.size();i++) {
