@@ -174,6 +174,9 @@ public abstract class Story {
           System.out.println("After getting your info, you kill the big, big man. Its not like he didn't deserve it, but that was kind of mean. He couldn't even move.");\
           dead = true;
         }
+        default:
+        throw new java.lang.IllegalArgumentException("Huh?");
+        break;
       }
     }
     System.out.println("You now jump into the river.");
@@ -185,5 +188,50 @@ public abstract class Story {
     combat3.add(new Knight());
     combat3.add(new Kobold());
     combat3.runCombat;
+    System.out.println("Looks like you've got the hang of this combat stuff. Hope you can keep it up.");
+    System.out.println("2 paths manifest in front of you. One on the left, aother on the right. Which one will you take?");
+    System.out.println("1. Left.");
+    System.out.println("2. Right");
+    switch(getIntResponse(2)){
+      case 1:
+      System.out.println("You go down the leftmost path");
+      break;
+      case 2:
+      System.out.println("You go down the right path.");
+      System.out.println("As you walk down the path, you smell something sour. I think it smells like a spike in difficulty...");
+      System.out.println("You might want to be careful.");
+      System.out.println("No scenery manifests, all that you see is a path of clearness in fog. The ground is also fog. Crazy, huh?");
+      System.out.println("Uh oh. A group of enemies approach. A quite large group...");
+      System.out.println("I hope you're ready!");
+      CombatContext combat4 = new CombatContext();
+      combat4.add(new Knight());
+      combat4.add(new Knight());
+      combat4.add(new Knight());
+      combat4.add(new Knight());
+      combat4.add(new Demon());
+      combat4.add(new Wyrm());
+      combat4.add(new Dwarf());
+      combat4.runCombat;
+      System.out.println("Wow. you're geting really good at this combat stuff.");
+      System.out.println("There are a lot of bodies in front of you.");
+      System.out.println("Wait... Do you hear that? It sounds like an engine...");
+      System.out.println("The sound gets closer.");
+      System.out.println("Louder.");
+      System.out.println("The loudness peaks and in front of you, a large vehicle appears.");
+      System.out.println("The engine shuts off and a man dressed in a blue jumpsuit jumps out.");
+      System.out.println("He wears a red helmet with a falcon on it.");
+      System.out.println("Its Captain Falcon!");
+      System.out.println("\"SHOW ME YA MOVES!\", he yells. You have found the first ");
+
+      System.out.println("Woah! you have defeated the Captain Falcon!");
+      System.out.println("There isn't anything ahead. You turn back and walk until you get to the split in the paths.");
+      System.out.println("You now walk on the path on the left");
+      break;
+      default:
+      throw new java.lang.IllegalArgumentException("Huh?");
+      break;
+    }
+    System.out.println("To be continued....");
+    System.out.println("We ran out of time for the project.")
   }
 }
