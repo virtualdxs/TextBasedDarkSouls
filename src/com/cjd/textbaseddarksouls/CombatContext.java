@@ -96,8 +96,7 @@ public class CombatContext {
         s.nextLine(); //Eat newline given to us
         switch (selection) {
           case 1:
-            playerCombat();
-            done = true;
+            done = playerCombat();
             break;
           case 2:
             done = player.castSpell(enemies);
