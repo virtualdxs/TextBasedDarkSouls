@@ -202,15 +202,15 @@ public abstract class Story {
       System.out.println("No scenery manifests, all that you see is a path of clearness in fog. The ground is also fog. Crazy, huh?");
       System.out.println("Uh oh. A group of enemies approach. A quite large group...");
       System.out.println("I hope you're ready!");
-      combat = new CombatContext();
-      combat.add(new Knight());
-      combat.add(new Knight());
-      combat.add(new Knight());
-      combat.add(new Knight());
-      combat.add(new Demon());
-      combat.add(new Wyrm());
-      combat.add(new Dwarf());
-      combat.runCombat();
+      Combat Context combat5 = new CombatContext();
+      combat5.add(new Knight());
+      combat5.add(new Knight());
+      combat5.add(new Knight());
+      combat5.add(new Knight());
+      combat5.add(new Demon());
+      combat5.add(new Wyrm());
+      combat5.add(new Dwarf());
+      combat5.runCombat();
       System.out.println("Wow. you're geting really good at this combat stuff.");
       System.out.println("There are a lot of bodies in front of you.");
       System.out.println("Wait... Do you hear that? It sounds like an engine...");
@@ -229,7 +229,15 @@ public abstract class Story {
       default:
       throw new java.lang.IllegalArgumentException("Huh?");
     }
-    System.out.println("To be continued....");
+    System.out.println("The enviroment manifests itself in a forest, albeit of fog. I wonder how stuff like this happens.");
+    System.out.println("The humidity of the air makes you choke a bit. This fog is super thick.");
+    System.out.println("You ok? You need a drink of water? You look lightheaded.");
+    System.out.println("Suddenly, you faint!");
+    System.out.println("After about 3 hours, you wake up in a fog house, with a fog man right next to you.");
+    System.out.println("He has a sword in one hand, a sandwich in the other. In between bites he says, \"Hey. You. Dead dude. What are you doing?\"");
+    System.out.println("Wait a minute, this looks familiar...");
+    System.out.println("The man says \"Alright I'm going to kill you now because I'm actually a spider minion. rawr xD\"");
+
     System.out.println("We ran out of time for the project.");
     try {Thread.sleep(10000);} catch (java.lang.InterruptedException boi) {}
     System.out.println("You're still here?");
